@@ -1,0 +1,73 @@
+$flaticon-font: "flaticon";
+
+@font-face {
+    font-family: $flaticon-font;
+    src: url("./flaticon.ttf?0ba4ec0afd809d7c3b294a78e1871678") format("truetype"),
+url("./flaticon.woff?0ba4ec0afd809d7c3b294a78e1871678") format("woff"),
+url("./flaticon.woff2?0ba4ec0afd809d7c3b294a78e1871678") format("woff2"),
+url("./flaticon.eot?0ba4ec0afd809d7c3b294a78e1871678#iefix") format("embedded-opentype"),
+url("./flaticon.svg?0ba4ec0afd809d7c3b294a78e1871678#flaticon") format("svg");
+}
+
+i[class^="flaticon-"]:before, i[class*=" flaticon-"]:before {
+    font-family: flaticon !important;
+    font-style: normal;
+    font-weight: normal !important;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+$flaticon-map: (
+    "left-quote": "\f101",
+    "group": "\f102",
+    "man": "\f103",
+    "infographic": "\f104",
+    "high": "\f105",
+    "diagram": "\f106",
+    "satisfaction": "\f107",
+    "video-camera": "\f108",
+    "layer": "\f109",
+    "lifesaver": "\f10a",
+    "education": "\f10b",
+    "teacher": "\f10c",
+);
+
+.flaticon-left-quote:before {
+    content: map-get($flaticon-map, "left-quote");
+}
+.flaticon-group:before {
+    content: map-get($flaticon-map, "group");
+}
+.flaticon-man:before {
+    content: map-get($flaticon-map, "man");
+}
+.flaticon-infographic:before {
+    content: map-get($flaticon-map, "infographic");
+}
+.flaticon-high:before {
+    content: map-get($flaticon-map, "high");
+}
+.flaticon-diagram:before {
+    content: map-get($flaticon-map, "diagram");
+}
+.flaticon-satisfaction:before {
+    content: map-get($flaticon-map, "satisfaction");
+}
+.flaticon-video-camera:before {
+    content: map-get($flaticon-map, "video-camera");
+}
+.flaticon-layer:before {
+    content: map-get($flaticon-map, "layer");
+}
+.flaticon-lifesaver:before {
+    content: map-get($flaticon-map, "lifesaver");
+}
+.flaticon-education:before {
+    content: map-get($flaticon-map, "education");
+}
+.flaticon-teacher:before {
+    content: map-get($flaticon-map, "teacher");
+}

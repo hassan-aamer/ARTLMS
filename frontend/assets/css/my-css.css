@@ -1,0 +1,25 @@
+
+.pagination
+{
+    justify-content: center;
+}
+.studentFileLi
+{
+    background: #e5e5e5 !important;
+    padding: 7px;
+    margin: 7px 15px !important;
+    border-radius: 5px;
+}
+.tutori-course-curriculum ul.curriculum-sections .section-content .course-item .section-item-link::before
+{
+    position: relative;
+    top: 2px;
+}
+.deleteBtn
+{
+    background-color: #e54949 !important;
+}
+.tutori-course-content .learn-press-nav-tabs .course-nav a
+{
+    padding:15px !important;
+}

@@ -1,0 +1,56 @@
+@font-face {
+    font-family: "flaticon";
+    src: url("./flaticon.ttf?0ba4ec0afd809d7c3b294a78e1871678") format("truetype"),
+url("./flaticon.woff?0ba4ec0afd809d7c3b294a78e1871678") format("woff"),
+url("./flaticon.woff2?0ba4ec0afd809d7c3b294a78e1871678") format("woff2"),
+url("./flaticon.eot?0ba4ec0afd809d7c3b294a78e1871678#iefix") format("embedded-opentype"),
+url("./flaticon.svg?0ba4ec0afd809d7c3b294a78e1871678#flaticon") format("svg");
+}
+
+i[class^="flaticon-"]:before, i[class*=" flaticon-"]:before {
+    font-family: flaticon !important;
+    font-style: normal;
+    font-weight: normal !important;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.flaticon-left-quote:before {
+    content: "\f101";
+}
+.flaticon-group:before {
+    content: "\f102";
+}
+.flaticon-man:before {
+    content: "\f103";
+}
+.flaticon-infographic:before {
+    content: "\f104";
+}
+.flaticon-high:before {
+    content: "\f105";
+}
+.flaticon-diagram:before {
+    content: "\f106";
+}
+.flaticon-satisfaction:before {
+    content: "\f107";
+}
+.flaticon-video-camera:before {
+    content: "\f108";
+}
+.flaticon-layer:before {
+    content: "\f109";
+}
+.flaticon-lifesaver:before {
+    content: "\f10a";
+}
+.flaticon-education:before {
+    content: "\f10b";
+}
+.flaticon-teacher:before {
+    content: "\f10c";
+}
