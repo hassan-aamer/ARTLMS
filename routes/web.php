@@ -1,66 +1,67 @@
 <?php
 //Access Token : glpat-4jA7skgTiFK1KH9fy9Gu
 
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
+use Spatie\Honeypot\ProtectAgainstSpam;
 use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\WebsiteControllers\ArticleController;
-use App\Http\Controllers\WebsiteControllers\CalendarController;
-use App\Http\Controllers\WebsiteControllers\CourseController;
-use App\Http\Controllers\WebsiteControllers\CurriculumController;
-use App\Http\Controllers\WebsiteControllers\GalleryController;
-use App\Http\Controllers\WebsiteControllers\GuideController;
-use App\Http\Controllers\WebsiteControllers\LessonController;
-use App\Http\Controllers\WebsiteControllers\ScheduledController;
+use App\Http\Controllers\StudentControllers\AuthController;
 use App\Http\Controllers\WebsiteControllers\ToolController;
 use App\Http\Controllers\WebsiteControllers\UnitController;
 use App\Http\Controllers\WebsiteControllers\ZoomController;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\WebsiteControllers\HomePageController;
-use App\Http\Controllers\WebsiteControllers\TeacherController;
+use App\Http\Controllers\WebsiteControllers\GuideController;
 use App\Http\Controllers\WebsiteControllers\SkillController;
-use App\Http\Controllers\WebsiteControllers\CategoryController;
-use App\Http\Controllers\StudentControllers\AuthController;
-use App\Http\Controllers\StudentControllers\DashboardController;
-use Spatie\Honeypot\ProtectAgainstSpam;
 use \App\Http\Controllers\WebsiteControllers\TimesController;
+use App\Http\Controllers\WebsiteControllers\CourseController;
+use App\Http\Controllers\WebsiteControllers\LessonController;
+use App\Http\Controllers\WebsiteControllers\ArticleController;
+use App\Http\Controllers\WebsiteControllers\GalleryController;
+use App\Http\Controllers\WebsiteControllers\TeacherController;
+use App\Http\Controllers\WebsiteControllers\CalendarController;
+use App\Http\Controllers\WebsiteControllers\CategoryController;
+use App\Http\Controllers\WebsiteControllers\HomePageController;
+use App\Http\Controllers\StudentControllers\DashboardController;
+use App\Http\Controllers\WebsiteControllers\ScheduledController;
+use App\Http\Controllers\WebsiteControllers\CurriculumController;
 
 //Clear Cache facade value:
-Route::get('/clear-cache', function() {
+Route::get('/clear-cache', function () {
     $exitCode = Artisan::call('cache:clear');
     return '<h1>Cache facade value cleared</h1>';
 });
 
 //Reoptimized class loader:
-Route::get('/optimize', function() {
+Route::get('/optimize', function () {
     $exitCode = Artisan::call('optimize');
     return '<h1>Reoptimized class loader</h1>';
 });
 
 //Route cache:
-Route::get('/route-cache', function() {
+Route::get('/route-cache', function () {
     $exitCode = Artisan::call('route:cache');
     return '<h1>Routes cached</h1>';
 });
 
 //Clear Route cache:
-Route::get('/route-clear', function() {
+Route::get('/route-clear', function () {
     $exitCode = Artisan::call('route:clear');
     return '<h1>Route cache cleared</h1>';
 });
 
 //Clear View cache:
-Route::get('/view-clear', function() {
+Route::get('/view-clear', function () {
     $exitCode = Artisan::call('view:clear');
     return '<h1>View cache cleared</h1>';
 });
 
 //Clear Config cache:
-Route::get('/config-cache', function() {
+Route::get('/config-cache', function () {
     $exitCode = Artisan::call('config:cache');
     return '<h1>Clear Config cleared</h1>';
 });
 
 //Clear Config cache:
-Route::get('/config-clear', function() {
+Route::get('/config-clear', function () {
     $exitCode = Artisan::call('config:clear');
     return '<h1>Clear Config cleared</h1>';
 });
@@ -84,13 +85,14 @@ Route::get('/verification_email/{encryptID}', [AuthController::class, 'verificat
 
 Route::get('/', [HomePageController::class, 'index'])->name('website.index');
 Route::get('/contact-us', [HomePageController::class, 'contacts'])->name('website.contacts');
-Route::post('/contact-us', [HomePageController::class, 'contacts_submit'])->name('website.contacts.submit')->middleware(ProtectAgainstSpam::class);;
+Route::post('/contact-us', [HomePageController::class, 'contacts_submit'])->name('website.contacts.submit')->middleware(ProtectAgainstSpam::class);
+;
 Route::get('/guides', [GuideController::class, 'index'])->name('website.guides.index');
 Route::get('/guides/{id}', [GuideController::class, 'show'])->name('website.guides.show');
 Route::post('/student/alreadyRating', [HomePageController::class, 'alreadyRating'])->name('website.student.alreadyRating');
 
 
-Route::middleware('auth')->group(function(){
+Route::middleware('auth')->group(function () {
     Route::get('/teachers', [TeacherController::class, 'index'])->name('website.teachers.index');
     Route::get('/teacher/{id}', [TeacherController::class, 'show'])->name('website.teachers.show');
     Route::get('/skills', [SkillController::class, 'index'])->name('website.skills.index');

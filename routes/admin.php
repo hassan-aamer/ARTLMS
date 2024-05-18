@@ -47,7 +47,7 @@ Route::middleware(['auth', 'teacher-admin-access'])->namespace('App\Http\Control
     //lessons
     Route::resource('lessons', 'LessonController');
 
-    Route::get('moduleFile/destroy/{id}', [\App\Http\Controllers\AdminControllers\CurriculumController::class,'moduleFileDestroy'])->name('moduleFile.destroy');
+    Route::get('moduleFile/destroy/{id}', [\App\Http\Controllers\AdminControllers\CurriculumController::class, 'moduleFileDestroy'])->name('moduleFile.destroy');
 
 
     //Sprint 3
@@ -57,8 +57,8 @@ Route::middleware(['auth', 'teacher-admin-access'])->namespace('App\Http\Control
     Route::resource('calendar_questions', 'CalendarQuestionController');
     //calendar answers
     Route::resource('calendar_answers', 'CalendarAnswerController');
-    Route::post('calendar/question/updateQuestionMark/{id}', [\App\Http\Controllers\AdminControllers\CalendarQuestionController::class,'updateQuestionMark'])->name('question.updateQuestionMark');
-//    Route::resource('meets', 'GoogleMeetController');
+    Route::post('calendar/question/updateQuestionMark/{id}', [\App\Http\Controllers\AdminControllers\CalendarQuestionController::class, 'updateQuestionMark'])->name('question.updateQuestionMark');
+    //    Route::resource('meets', 'GoogleMeetController');
     //Sprint 4
     //tools
     Route::resource('tools', 'ToolController');
