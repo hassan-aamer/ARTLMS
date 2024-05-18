@@ -1995,7 +1995,7 @@ Testiomonial
 }
 
 /*----------------------
-Team Style
+Team Style 
 ------------------------*/
 .team-item {
   border-radius: 5px;
@@ -5392,9 +5392,4 @@ Fixed top top bottom
 .py-80 {
   padding-top: 80px;
   padding-bottom: 80px;
-}
-
-.thm-separator{
-    line-height: 20px;
-    height: 20px;
 }

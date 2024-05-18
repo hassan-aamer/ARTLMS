@@ -17,7 +17,7 @@
 	border: 0px solid rgb(255 255 255 / 0%);
     border-radius: 10px;
     box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%);
-
+	
 }
 
 .offcanvas-end {
@@ -242,11 +242,11 @@
 .text-facebook{
 	color: #3b5998!important
  }
-
+ 
  .text-twitter{
 	 color: #55acee!important
   }
-
+ 
   .text-youtube{
 	 color: #e52d27!important
   }
@@ -314,7 +314,7 @@
 
 .btn i {
     vertical-align: middle;
-    font-size: 1rem;
+    font-size: 1.rem;
     margin-top: -1em;
     margin-bottom: -1em;
     margin-right: 5px;
