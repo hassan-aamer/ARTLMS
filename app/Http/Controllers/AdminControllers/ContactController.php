@@ -62,8 +62,7 @@ class ContactController extends Controller
 
             Mail::to($email)->send(new sendMail($message));
 
-            toastr()->success($this->deleteMsg, 'نجح', ['timeOut' => 5000]);
-            return redirect()->back();
+            return redirect()->back()->with(['success' => 'تم ارسال الرسالة بنجاح']);
 
         } catch (\Exception $e) {
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
