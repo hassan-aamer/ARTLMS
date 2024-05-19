@@ -1,6 +1,6 @@
 
+    <x-mail::message>
 
-    <h2>{{ $message }}</h2>
+        {{ $message }}
 
-
-
+    </x-mail::message>

@@ -41,10 +41,7 @@
                                             <a class="dropdown-item" href="#">المعلم / المحاضر</a>
                                             <a class="dropdown-item" href="#">الفنان او اكثر</a>
                                             <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#sendmessage{{$con->id}}">الرد</a>
-                                            <a class="dropdown-item" href="#"><i class="bi bi-file-earmark-plus-fill"></i>اضافة مرفقات</a>
-                                            <a class="dropdown-item" href="#"><i class="bi bi-printer-fill"></i>طباعة اة تصدير </a>
-                                            <a class="dropdown-item" href="#">تعطيل</a>
-                                            <a class="dropdown-item" href="#"><i class="bi bi-ban"></i> تعديل</a>
+                                            <a class="dropdown-item" href="#"><i class="bi bi-printer-fill"></i>  طباعة او تصدير </a>
                                             <a class="dropdown-item" href="#"  data-bs-toggle="modal" data-bs-target="#deleteItem{{$con->id}}" data-bs-toggle="tooltip"><i class="bi bi-trash-fill"></i> حذف</a>
                                         </div>
                                     </div>
