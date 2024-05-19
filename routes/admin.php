@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\AdminControllers\AuthController;
-use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\AdminControllers\AuthController;
+use App\Http\Controllers\AdminControllers\ContactController;
 use App\Http\Controllers\AdminControllers\DashboardController;
 
 
@@ -78,7 +79,7 @@ Route::middleware(['auth', 'teacher-admin-access'])->namespace('App\Http\Control
     Route::resource('articles', 'ArticleController');
     Route::resource('article_categories', 'ArticleCategoryController');
     Route::resource('article_tags', 'ArticleTagController');
-    Route::post('send', [App\Http\Controllers\AdminControllers\ContactController::class,'send']);
+    Route::post('send/{id}', [ContactController::class, 'send'])->name('contact.send');
     Route::resource('contacts', 'ContactController');
     Route::resource('guides', 'GuideController');
     Route::get('/settings', 'SettingController@index')->name('settings.index');

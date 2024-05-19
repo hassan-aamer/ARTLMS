@@ -4,6 +4,7 @@ namespace App\Http\Controllers\AdminControllers;
 
 use App\Models\Level;
 use App\Models\Contact;
+use App\Mail\ContactMail;
 use App\Models\ArticleTag;
 use Illuminate\Http\Request;
 use App\Models\ArticleCategory;
@@ -23,8 +24,8 @@ class ContactController extends Controller
     public function index()
     {
 
-       $content = Contact::latest()->paginate($this->paginate);
-        return view('admin_dashboard.contacts.index' , compact('content'));
+        $content = Contact::latest()->paginate($this->paginate);
+        return view('admin_dashboard.contacts.index', compact('content'));
     }
 
     /**
@@ -32,7 +33,7 @@ class ContactController extends Controller
      */
     public function show(Contact $contact)
     {
-        $content =  $contact;
+        $content = $contact;
         return view('admin_dashboard.contacts.show', compact('content'));
     }
 
@@ -46,17 +47,27 @@ class ContactController extends Controller
         return redirect()->back();
     }
 
-    public function send(Request $request ,$id)
+    public function send(Request $request, $id)
     {
-        $message = Contact::find($id);
-        $email = $message->email;
-        $data = ['message' => $request->message];
+        try {
+            $request->validate([
+                'message' => 'required|string',
+            ]);
 
-        Mail::send('emails.contact', $data, function ($message) use ($email) {
-            $message->to($email)
-                    ->subject('رسالة جديدة من صفحة الاتصال');
-        });
+            $contact = Contact::find($id);
 
-        return back()->with('success', 'تم إرسال الرسالة بنجاح!');
+            $email = $contact->email;
+            $message = $request->message;
+
+            Mail::to($email)->send(new ContactMail($message));
+
+            toastr()->success($this->deleteMsg, 'نجح', ['timeOut' => 5000]);
+            return redirect()->back();
+
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
+
     }
+
 }

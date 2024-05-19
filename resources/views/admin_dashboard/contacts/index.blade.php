@@ -69,20 +69,20 @@
                                     <div class="modal fade" id="sendmessage{{$con->id}}" tabindex="-1" aria-labelledby="link{{$con->id}}" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <input class="form-control" name="message" placeholder="اكتب الرساله" required />
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button class="btn btn-outline-default btn-sm me-2" type="button" data-bs-dismiss="modal">الغاء</button>
-                                                    <form action="{{url('send',$con->id)}}" method="POST">
-                                                        @method('POST')
-                                                        @csrf
-                                                        <button type="submit" class="btn btn-outline-danger btn-sm" type="button">ارسال</button>
-                                                    </form>
-                                                </div>
+                                                <form action="{{ route('contact.send', $con->id) }}" method="POST">
+                                                    @csrf
+                                                    <div class="modal-header">
+                                                        <input class="form-control" name="message" placeholder="اكتب الرساله" required />
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button class="btn btn-outline-default btn-sm me-2" type="button" data-bs-dismiss="modal">الغاء</button>
+                                                        <button type="submit" class="btn btn-outline-danger btn-sm">ارسال</button>
+                                                    </div>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
+
                                 </div>
 
 
