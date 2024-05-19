@@ -40,7 +40,7 @@
                                             <a class="dropdown-item" href="#">اعادة التوجية للمتعلم</a>
                                             <a class="dropdown-item" href="#">المعلم / المحاضر</a>
                                             <a class="dropdown-item" href="#">الفنان او اكثر</a>
-                                            <a class="dropdown-item" href="#">الرد</a>
+                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#sendmessage{{$con->id}}">الرد</a>
                                             <a class="dropdown-item" href="#"><i class="bi bi-file-earmark-plus-fill"></i>اضافة مرفقات</a>
                                             <a class="dropdown-item" href="#"><i class="bi bi-printer-fill"></i>طباعة اة تصدير </a>
                                             <a class="dropdown-item" href="#">تعطيل</a>
@@ -61,6 +61,23 @@
                                                         @method('DELETE')
                                                         @csrf
                                                         <button type="submit" class="btn btn-outline-danger btn-sm" type="button">نعم</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal fade" id="sendmessage{{$con->id}}" tabindex="-1" aria-labelledby="link{{$con->id}}" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <input class="form-control" name="message" placeholder="اكتب الرساله" required />
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button class="btn btn-outline-default btn-sm me-2" type="button" data-bs-dismiss="modal">الغاء</button>
+                                                    <form action="{{url('send',$con->id)}}" method="POST">
+                                                        @method('POST')
+                                                        @csrf
+                                                        <button type="submit" class="btn btn-outline-danger btn-sm" type="button">ارسال</button>
                                                     </form>
                                                 </div>
                                             </div>
