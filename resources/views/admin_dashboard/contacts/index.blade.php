@@ -31,10 +31,23 @@
 
                             <td>
                                 <div class="table-actions d-flex align-items-center gap-3 fs-6">
-                                    <a href="{{route('contacts.show', $con->id)}}" class="text-warning" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                       title="فتح الرسالة"><i class="bi bi-pencil-fill"></i></a>
-                                    <a href="javascript:;"  data-bs-toggle="modal" data-bs-target="#deleteItem{{$con->id}}" class="text-danger" data-bs-toggle="tooltip"
-                                       data-bs-placement="bottom" title="حذف"><i class="bi bi-trash-fill"></i></a>
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-outline-primary btn-sm dropdown-toggle budget-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            العمليات
+                                        </button>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="{{route('contacts.show', $con->id)}}">فتح الرسالة </a>
+                                            <a class="dropdown-item" href="#">اعادة التوجية للمتعلم</a>
+                                            <a class="dropdown-item" href="#">المعلم / المحاضر</a>
+                                            <a class="dropdown-item" href="#">الفنان او اكثر</a>
+                                            <a class="dropdown-item" href="#">الرد</a>
+                                            <a class="dropdown-item" href="#"><i class="bi bi-file-earmark-plus-fill"></i>اضافة مرفقات</a>
+                                            <a class="dropdown-item" href="#"><i class="bi bi-printer-fill"></i>طباعة اة تصدير </a>
+                                            <a class="dropdown-item" href="#">تعطيل</a>
+                                            <a class="dropdown-item" href="#"><i class="bi bi-ban"></i> تعديل</a>
+                                            <a class="dropdown-item" href="#"  data-bs-toggle="modal" data-bs-target="#deleteItem{{$con->id}}" data-bs-toggle="tooltip"><i class="bi bi-trash-fill"></i> حذف</a>
+                                        </div>
+                                    </div>
                                     <div class="modal fade" id="deleteItem{{$con->id}}" tabindex="-1" aria-labelledby="link{{$con->id}}" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content">
@@ -56,21 +69,6 @@
                                 </div>
 
 
-                                {{-- hassan --}}
-                                <div class="dropdown show">
-                                    <a class="btn btn-success btn-sm dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        العمليات
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                        <a class="dropdown-item" href="#"><i style="color: #ffc107" class="far fa-eye "></i>&nbsp; عرض بيانات الطالب</a>
-                                        <a class="dropdown-item" href="#"><i style="color:green" class="fa fa-edit"></i>&nbsp; تعديل بيانات الطالب</a>
-                                        <a class="dropdown-item" href="#"><i style="color: #0000cc" class="fa fa-edit"></i>&nbsp;اضافة فاتورة رسوم&nbsp;</a>
-                                        <a class="dropdown-item" href="#"><i style="color: #9dc8e2" class="fas fa-money-bill-alt"></i>&nbsp;&nbsp;سند قبض</a>
-                                        <a class="dropdown-item" href="#"><i style="color: #9dc8e2" class="fas fa-money-bill-alt"></i>&nbsp;&nbsp; استبعاد رسوم</a>
-                                        <a class="dropdown-item" href="#"><i style="color:goldenrod" class="fas fa-donate"></i>&nbsp;&nbsp;سند صرف</a>
-                                    </div>
-                                </div>
-                                
 
 
                             </td>
