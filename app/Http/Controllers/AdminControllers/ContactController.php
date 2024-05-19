@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\AdminControllers;
 
 use App\Models\Level;
+use App\Mail\sendMail;
 use App\Models\Contact;
 use App\Mail\ContactMail;
 use App\Models\ArticleTag;
@@ -59,7 +60,7 @@ class ContactController extends Controller
             $email = $contact->email;
             $message = $request->message;
 
-            Mail::to($email)->send(new ContactMail($message));
+            Mail::to($email)->send(new sendMail($message));
 
             toastr()->success($this->deleteMsg, 'نجح', ['timeOut' => 5000]);
             return redirect()->back();
