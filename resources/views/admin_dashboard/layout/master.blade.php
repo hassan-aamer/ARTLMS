@@ -89,7 +89,7 @@
 <script src="{{ asset('admin_dashboard/assets/js/app.js')}}"></script>
 
 @stack('scripts')
-
+@yield('js')
 <script>
     //Add New Row
     $(document).on('click','#addNewRow', function(){
