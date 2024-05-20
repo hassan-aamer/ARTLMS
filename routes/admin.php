@@ -18,6 +18,9 @@ Route::middleware(['auth', 'teacher-admin-access'])->namespace('App\Http\Control
     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('admin.dashboard');
     //students
     Route::resource('students', 'StudentController');
+    Route::get('send-email/{id}', 'SendEmailController@index')->name('send-email');
+    Route::resource('sendEmail', 'SendEmailController');
+
     //teachers
     Route::resource('teachers', 'TeacherController');
     Route::post('teachers/assignments/{id}', 'TeacherController@assignments')

@@ -37,7 +37,7 @@
                                         </button>
                                         <div class="dropdown-menu">
                                             <a class="dropdown-item" href="{{route('contacts.show', $con->id)}}">فتح الرسالة </a>
-                                            <a class="dropdown-item" href="{{route('students.index')}}">اعادة التوجية للمتعلم</a>
+                                            <a class="dropdown-item" href="{{route('send-email', $con->id)}}">اعادة التوجية </a>
                                             <a class="dropdown-item" href="{{route('teachers.index')}}">المعلم / المحاضر</a>
                                             <a class="dropdown-item" href="{{route('categories.index')}}">الفنان او اكثر</a>
                                             <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#sendmessage{{$con->id}}">الرد</a>
