@@ -48,6 +48,13 @@ class ContactController extends Controller
         return redirect()->back();
     }
 
+    public function update(Request $request, $id)
+    {
+        $contact = Contact::findOrFail($id);
+        $contact->update($request->all());
+        return redirect()->back()->with(['success' => 'تم ارسال الرسالة بنجاح']);
+    }
+
     public function send(Request $request, $id)
     {
         try {
