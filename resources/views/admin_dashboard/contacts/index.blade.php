@@ -38,8 +38,6 @@
                                         <div class="dropdown-menu">
                                             <a class="dropdown-item" href="{{route('contacts.show', $con->id)}}">فتح الرسالة </a>
                                             <a class="dropdown-item" href="{{route('send-email', $con->id)}}">اعادة التوجية </a>
-                                            <a class="dropdown-item" href="{{route('teachers.index')}}">المعلم / المحاضر</a>
-                                            <a class="dropdown-item" href="{{route('categories.index')}}">الفنان او اكثر</a>
                                             <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#sendmessage{{$con->id}}">الرد</a>
                                             <a class="dropdown-item" href="{{route('contacts.show', $con->id)}}"><i class="bi bi-printer-fill"></i> طباعة </a>
                                             <a class="dropdown-item" href="#"  data-bs-toggle="modal" data-bs-target="#deleteItem{{$con->id}}" data-bs-toggle="tooltip"><i class="bi bi-trash-fill"></i> حذف</a>
