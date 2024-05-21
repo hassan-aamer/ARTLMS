@@ -46,7 +46,7 @@
                                             العمليات
                                         </button>
                                         <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="#"> قبول اضافة متعلمين </a>
+                                            <a class="dropdown-item" href="{{route('students.edit', $con->id)}}"> قبول اضافة متعلمين </a>
                                             <a class="dropdown-item" href="#"> اضافة مجموعات</a>
                                             <a class="dropdown-item" href="#"> توزيع المتعلمين فى المجموعات</a>
                                             <a class="dropdown-item" href="#"><i class="bi bi-printer-fill"></i>طباعة</a>
