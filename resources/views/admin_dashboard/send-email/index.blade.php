@@ -127,6 +127,46 @@
                 </div>
             </div>
         </div>
+
+        {{-- ------------------------------------الفنانين--------------------------------- --}}
+
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex align-items-center">
+                    <h5 class="mb-0"> <i class="bi bi-grid-fill"></i> الفنانين </h5>
+                </div>
+                <div class="table-responsive mt-4">
+                    <table class="table align-middle">
+                        <thead class="table-secondary">
+                            <tr>
+                                <th>#</th>
+                                <th>الاسم</th>
+                                <th>البريد الإلكتروني</th>
+                                <th>التحكم</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @forelse($student as $con)
+                                <tr>
+                                    <td>{{ $con->id }}</td>
+                                    <td>{{ $con->name }}</td>
+                                    <td>{{ $con->email }}</td>
+                                    <td>
+                                        <input type="checkbox" name="students[]" value="{{ $con->id }}">
+                                    </td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td colspan="6" class="text-center">
+                                        <p> لا يوجد بيانات </p>
+                                    </td>
+                                </tr>
+                            @endforelse
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
         {{-- -------------------------------------------------------------------- --}}
         <div class="row">
             <div class="col-lg-12 mx-auto">
