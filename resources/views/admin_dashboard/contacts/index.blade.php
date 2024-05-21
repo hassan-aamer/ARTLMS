@@ -37,7 +37,7 @@
                                         </button>
                                         <div class="dropdown-menu">
                                             <a class="dropdown-item" href="{{ route('contacts.show', $con->id) }}">
-                                                <i class="bi bi-envelope-open"></i> فتح الرسالةhh
+                                                <i class="bi bi-envelope-open"></i> فتح الرسالة
                                             </a>
                                             <a class="dropdown-item" href="{{ route('contact.update', $con->id) }}">
                                                 <i class="bi bi-pencil-square"></i> تعديل الرسالة
