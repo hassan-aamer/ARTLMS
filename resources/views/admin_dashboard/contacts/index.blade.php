@@ -36,13 +36,27 @@
                                             العمليات
                                         </button>
                                         <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="{{route('contacts.show', $con->id)}}">فتح الرسالة </a>
-                                            <a class="dropdown-item" href="#">تعديل الرسالة </a>
-                                            <a class="dropdown-item" href="{{route('send-email', $con->id)}}">  إعادة توجيه </a>
-                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#sendmessage{{$con->id}}">الرد</a>
-                                            <a class="dropdown-item" href="{{route('contacts.show', $con->id)}}"><i class="bi bi-printer-fill"></i> تصدير طباعة </a>
-                                            <a class="dropdown-item" href="#"  data-bs-toggle="modal" data-bs-target="#deleteItem{{$con->id}}" data-bs-toggle="tooltip"><i class="bi bi-trash-fill"></i> حذف</a>
+                                            <a class="dropdown-item" href="{{ route('contacts.show', $con->id) }}">
+                                                <i class="bi bi-envelope-open"></i> فتح الرسالة
+                                            </a>
+                                            <a class="dropdown-item" href="#">
+                                                <i class="bi bi-pencil-square"></i> تعديل الرسالة
+                                            </a>
+                                            <a class="dropdown-item" href="{{ route('send-email', $con->id) }}">
+                                                <i class="bi bi-arrow-repeat"></i> إعادة توجيه
+                                            </a>
+                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#sendmessage{{ $con->id }}">
+                                                <i class="bi bi-reply"></i> الرد
+                                            </a>
+                                            <a class="dropdown-item" href="{{ route('contacts.show', $con->id) }}">
+                                                <i class="bi bi-printer-fill"></i> تصدير طباعة
+                                            </a>
+                                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#deleteItem{{ $con->id }}" data-bs-toggle="tooltip">
+                                                <i class="bi bi-trash-fill"></i> حذف
+                                            </a>
                                         </div>
+
+
                                     </div>
                                     <div class="modal fade" id="deleteItem{{$con->id}}" tabindex="-1" aria-labelledby="link{{$con->id}}" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered">
