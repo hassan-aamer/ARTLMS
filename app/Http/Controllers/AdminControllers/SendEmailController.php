@@ -2,20 +2,17 @@
 
 namespace App\Http\Controllers\AdminControllers;
 
-use App\Mail\SendEmailUsers;
+
 use App\Models\User;
 use App\Models\Contact;
 use Illuminate\Http\Request;
 use App\Http\Traits\HelperTrait;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Mail;
+use App\Jobs\SendEmailUser;
 
 class SendEmailController extends Controller
 {
     use HelperTrait;
-    /**
-     * Display a listing of the resource.
-     */
     public function index($id)
     {
         $contactMessage = Contact::find($id);
@@ -27,15 +24,12 @@ class SendEmailController extends Controller
     public function store(Request $request)
     {
         try {
-            $contactMessage = $request->input('contactMessage');
-            $contactDetails = Contact::find($contactMessage);
 
+            $contactMessageId = $request->input('contactMessage');
             $teacherIds = $request->input('teachers', []);
             $studentIds = $request->input('students', []);
-            $userIds = array_merge($teacherIds, $studentIds);
-            $emails = User::whereIn('id', $userIds)->pluck('email')->toArray();
 
-            Mail::to($emails)->send(new SendEmailUsers($contactDetails));
+            SendEmailUser::dispatch($contactMessageId, $teacherIds, $studentIds);
 
             return redirect()->back()->with(['success' => 'تم ارسال الرسالة الى المستخدمين بنجاح']);
 
