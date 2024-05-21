@@ -11,13 +11,12 @@
                         </p>
 
                         <div class="footer-socials mt-3">
-                  <span class="me-2">
-                    <i class="far fa-envelope me-2"></i>
-                    للتواصل
-                  </span>
+                            <span class="me-2">
+                                <i class="far fa-envelope me-2"></i>
+                                للتواصل
+                            </span>
                             <a href="mailto:mohamednaser@spcd.psu.edu.eg">
-                                mohamednaser@spcd.psu.edu.eg</a
-                            >
+                                mohamednaser@spcd.psu.edu.eg</a>
                         </div>
                     </div>
                 </div>
@@ -61,7 +60,7 @@
                         <ul class="list-unstyled footer-links">
                             <li><a href="{{ url('curriculums') }}">المناهج الدراسية</a></li>
                             <li><a href="{{ url('categories') }}">المجالات و المحاور الفنية</a></li>
-                        <li><a href="{{getSettings('رابط تقييم المنصة')}}" target="_blank">تقييم المنصة</a></li>
+                            <li><a href="{{ getSettings('رابط تقييم المنصة') }}" target="_blank">تقييم المنصة</a></li>
                         </ul>
                     </div>
                 </div>
@@ -74,14 +73,12 @@
             <div class="row align-items-center">
                 <div class="col-xl-6 col-sm-12 col-lg-6">
                     <p class="mb-0 copyright text-sm-center text-lg-start">
-                        جميع الحقوق محفوظة ، منصة فن © 2023
+                        جميع الحقوق محفوظة ، منصة فن © 2024
                     </p>
                 </div>
 
                 <div class="col-xl-6 col-sm-12 col-lg-6">
-                    <div
-                        class="footer-btm-links text-start text-sm-center text-lg-end"
-                    >
+                    <div class="footer-btm-links text-start text-sm-center text-lg-end">
                         <ul class="list-inline">
                             <li class="list-inline-item">
                                 <a href="{{ url('contact-us') }}">تواصل معنا</a>
@@ -96,10 +93,17 @@
             </div>
         </div>
     </div>
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-xl-6 col-sm-12 col-lg-6">
+                <p class="mb-0 copyright text-sm-center text-lg-start">
+                    <a href="https://hassan-aamer.github.io/My_Portfolio/"> Development by &#169;</a>
+                </p>
+            </div>
+        </div>
+    </div>
 
     <div class="fixed-btm-top">
-        <a href="#top-header" class="js-scroll-trigger scroll-to-top"
-        ><i class="fa fa-angle-up"></i
-            ></a>
+        <a href="#top-header" class="js-scroll-trigger scroll-to-top"><i class="fa fa-angle-up"></i></a>
     </div>
 </section>
