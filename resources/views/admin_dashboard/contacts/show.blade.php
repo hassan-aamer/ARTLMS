@@ -45,7 +45,7 @@
                                             <li class="mb-3">
                                                 <strong>المرفق :</strong>
                                                 @if($content->file)
-                                                <a href="{{ url('uploads/' . $content->file) }}" download>
+                                                <a href="{{ url('public/uploads/' . $content->file) }}" download>
                                                     اضغط هنا لتحميل المرفق
                                                 </a>
                                                 @else
