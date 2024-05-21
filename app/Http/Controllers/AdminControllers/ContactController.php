@@ -10,10 +10,12 @@ use App\Models\ArticleTag;
 use Illuminate\Http\Request;
 use App\Models\ArticleCategory;
 use App\Http\Traits\HelperTrait;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\ArticleRequest;
+use Illuminate\Support\Facades\Storage;
 
 class ContactController extends Controller
 {
@@ -48,11 +50,36 @@ class ContactController extends Controller
         return redirect()->back();
     }
 
-    public function update(Request $request, $id)
+    public function showUpdate($id)
     {
         $contact = Contact::findOrFail($id);
-        $contact->update($request->all());
-        return redirect()->back()->with(['success' => 'تم ارسال الرسالة بنجاح']);
+        return view('admin_dashboard.contacts.update', compact('contact'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        DB::beginTransaction();
+        try {
+            $contact = Contact::findOrFail($id);
+
+            if ($request->hasFile('file')) {
+                if ($contact->file) {
+                    Storage::disk('images')->delete($contact->file);
+                }
+
+                $filePath = $request->file('file')->store('', 'images');
+                $contact->file = $filePath;
+            }
+
+            $contact->update($request->except('file'));
+
+            DB::commit();
+
+            return redirect()->back()->with(['success' => 'تم تعديل الرساله ']);
+        } catch (\Exception $e) {
+            DB::rollback();
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
     }
 
     public function send(Request $request, $id)
