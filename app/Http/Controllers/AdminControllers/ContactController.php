@@ -122,7 +122,7 @@ class ContactController extends Controller
     }
 
 
-    public function sendd(Request $request, $id)
+    public function senddd(Request $request, $id)
     {
         try {
             $request->validate([
