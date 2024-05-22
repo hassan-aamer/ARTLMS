@@ -86,7 +86,7 @@ class ContactController extends Controller
     }
 
     public function addAttach(Request $request, $id)
-    {
+    {   return $request;
         DB::beginTransaction();
         try {
             $contact = Contact::findOrFail($id);
@@ -109,8 +109,6 @@ class ContactController extends Controller
                 $filePath = $request->file('file')->store('files', 'images');
                 $contactFileData['file'] = $filePath;
             }
-
-            return $contactFileData;
 
             ContactFile::create($contactFileData);
 
