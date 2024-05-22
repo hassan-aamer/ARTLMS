@@ -4,7 +4,7 @@
 
 <br><br><br>
 
-<x-mail::button :url="'https://art-lms.net'">
+<x-mail::button :url="'http://artlms.art-lms.net/'">
 View Website
 </x-mail::button>
 
