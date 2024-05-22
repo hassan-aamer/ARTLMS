@@ -85,10 +85,10 @@ Route::middleware(['auth', 'teacher-admin-access'])->namespace('App\Http\Control
     Route::post('send/{id}', [ContactController::class, 'send'])->name('contact.send');
     Route::get('update/{id}', [ContactController::class, 'showUpdate'])->name('contact.update');
     Route::put('update/{id}', [ContactController::class, 'update'])->name('contact.update');
-    Route::post('hh/{id}', function ($id) {
-        dd(1);
-    })->name('hh');
-
+    // Route::post('hh/{id}', function ($id) {
+    //     dd(1);
+    // })->name('hh');
+    Route::post('hh/{id}', 'ContactController@att')->name('hh');
 
     Route::resource('contacts', 'ContactController');
     Route::resource('guides', 'GuideController');
