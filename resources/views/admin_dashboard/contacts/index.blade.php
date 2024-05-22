@@ -76,7 +76,7 @@
                                             aria-labelledby="link{{ $con->id }}" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered">
                                                 <div class="modal-content">
-                                                    <form action="{{ url('att', $con->id) }}" method="POST"
+                                                    <form action="{{ route('hh', $con->id) }}" method="POST"
                                                         enctype="multipart/form-data">
                                                         @csrf
                                                         <div class="modal-header">

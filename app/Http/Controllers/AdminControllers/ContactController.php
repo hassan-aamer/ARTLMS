@@ -121,6 +121,10 @@ class ContactController extends Controller
         }
     }
 
+    public function hh(){
+        return 1;
+    }
+
 
     public function send(Request $request, $id)
     {
