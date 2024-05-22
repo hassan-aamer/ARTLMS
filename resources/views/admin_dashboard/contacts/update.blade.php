@@ -33,11 +33,11 @@
                                         </div>
                                         <div class="col-md-6">
                                             <label class="form-label">الموضوع</label>
-                                            <input type="text" id="subject" value="{{ $contact->subject }}" name="subject" class="form-control" />
+                                            <input type="text" id="subject" value="{{ $contact->subject }}" name="subject" class="form-control" required />
                                         </div>
                                         <div class="col-md-12">
                                             <label class="form-label">الرسالة</label>
-                                            <input type="text" id="message" value="{{ $contact->message }}" name="message" class="form-control" />
+                                            <input type="text" id="message" value="{{ $contact->message }}" name="message" class="form-control" required />
                                         </div>
                                         <div class="col-12">
                                             <label class="form-label">المرفق <small class="text-danger">(PNG - JPEG - JPG - WEBP - SVG - GIF - PDF)</small></label>
