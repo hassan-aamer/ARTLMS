@@ -11,6 +11,7 @@
     <link href="{{ asset('admin_dashboard/assets/plugins/simplebar/css/simplebar.css')}}" rel="stylesheet" />
     <link href="{{ asset('admin_dashboard/assets/plugins/metismenu/css/metisMenu.min.css')}}" rel="stylesheet" />
     <!-- Bootstrap CSS -->
+    @yield('css')
     <link href="{{ asset('admin_dashboard/assets/css/bootstrap.min.css')}}" rel="stylesheet" />
     <link href="{{ asset('admin_dashboard/assets/css/bootstrap-extended.css')}}" rel="stylesheet" />
     <link href="{{ asset('admin_dashboard/assets/css/style.css')}}" rel="stylesheet" />

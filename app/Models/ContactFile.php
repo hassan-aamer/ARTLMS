@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Contact extends Model
+class ContactFile extends Model
 {
     use HasFactory;
     protected $guarded = [''];
 
-    public function contactFile()
+    public function contact()
     {
-        return $this->hasOne(ContactFile::class);
+        return $this->belongsTo(Contact::class);
     }
 }

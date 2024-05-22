@@ -39,10 +39,10 @@
                                             <label class="form-label">الرسالة</label>
                                             <input type="text" id="message" value="{{ $contact->message }}" name="message" class="form-control" required />
                                         </div>
-                                        <div class="col-12">
+                                        {{-- <div class="col-12">
                                             <label class="form-label">المرفق <small class="text-danger">(PNG - JPEG - JPG - WEBP - SVG - GIF - PDF)</small></label>
                                             <input class="form-control" type="file" name="file" accept="image/*,application/pdf" multiple >
-                                        </div>
+                                        </div> --}}
                                         <div class="col-12">
                                             <button type="submit" class="btn btn-sm btn-primary col-2">تعديل</button>
                                         </div>

@@ -42,7 +42,7 @@
                                                 <strong>التوقيت :</strong>
                                                 <span>{{ $content->created_at->diffForHumans() }}</span>
                                             </li>
-                                            <li class="mb-3">
+                                            {{-- <li class="mb-3">
                                                 <strong>المرفق :</strong>
                                                 @if($content->file)
                                                 <a href="{{ url('public/uploads/' . $content->file) }}" download>
@@ -51,7 +51,7 @@
                                                 @else
                                                     <span>لا يوجد مرفق</span>
                                                 @endif
-                                            </li>
+                                            </li> --}}
 
                                         </ul>
                                     </div>

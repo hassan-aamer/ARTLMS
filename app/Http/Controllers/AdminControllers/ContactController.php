@@ -62,16 +62,18 @@ class ContactController extends Controller
         try {
             $contact = Contact::findOrFail($id);
 
-            if ($request->hasFile('file')) {
-                if ($contact->file) {
-                    Storage::disk('images')->delete($contact->file);
-                }
+            $contact->update($request->all());
 
-                $filePath = $request->file('file')->store('', 'images');
-                $contact->file = $filePath;
-            }
+            // if ($request->hasFile('file')) {
+            //     if ($contact->file) {
+            //         Storage::disk('images')->delete($contact->file);
+            //     }
 
-            $contact->update($request->except('file'));
+            //     $filePath = $request->file('file')->store('', 'images');
+            //     $contact->file = $filePath;
+            // }
+
+            // $contact->update($request->except('file'));
 
             DB::commit();
 
