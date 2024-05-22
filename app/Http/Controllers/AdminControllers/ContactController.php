@@ -65,17 +65,6 @@ class ContactController extends Controller
 
             $contact->update($request->all());
 
-            // if ($request->hasFile('file')) {
-            //     if ($contact->file) {
-            //         Storage::disk('images')->delete($contact->file);
-            //     }
-
-            //     $filePath = $request->file('file')->store('', 'images');
-            //     $contact->file = $filePath;
-            // }
-
-            // $contact->update($request->except('file'));
-
             DB::commit();
 
             return redirect()->back()->with(['success' => 'تم تعديل الرساله ']);
