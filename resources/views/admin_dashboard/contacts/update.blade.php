@@ -40,7 +40,7 @@
                                             <input type="text" id="message" value="{{ $contact->message }}" name="message" class="form-control" />
                                         </div>
                                         <div class="col-12">
-                                            <label class="form-label">الصوره <small class="text-danger">(PNG - JPEG - JPG - WEBP - SVG - GIF - PDF)</small></label>
+                                            <label class="form-label">المرفق <small class="text-danger">(PNG - JPEG - JPG - WEBP - SVG - GIF - PDF)</small></label>
                                             <input class="form-control" type="file" name="file" accept="image/*,application/pdf">
                                         </div>
                                         <div class="col-12">
