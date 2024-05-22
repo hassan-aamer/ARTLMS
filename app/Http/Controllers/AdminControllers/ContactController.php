@@ -122,26 +122,26 @@ class ContactController extends Controller
     }
 
 
-    public function senddd(Request $request, $id)
-    {
-        try {
-            $request->validate([
-                'message' => 'required|string',
-            ]);
+    // public function send(Request $request, $id)
+    // {
+    //     try {
+    //         $request->validate([
+    //             'message' => 'required|string',
+    //         ]);
 
-            $contact = Contact::find($id);
+    //         $contact = Contact::find($id);
 
-            $email = $contact->email;
-            $message = $request->message;
+    //         $email = $contact->email;
+    //         $message = $request->message;
 
-            Mail::to($email)->send(new sendMail($message));
+    //         Mail::to($email)->send(new sendMail($message));
 
-            return redirect()->back()->with(['success' => 'تم ارسال الرسالة بنجاح']);
+    //         return redirect()->back()->with(['success' => 'تم ارسال الرسالة بنجاح']);
 
-        } catch (\Exception $e) {
-            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
-        }
+    //     } catch (\Exception $e) {
+    //         return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+    //     }
 
-    }
+    // }
 
 }
