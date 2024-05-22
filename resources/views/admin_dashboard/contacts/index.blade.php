@@ -52,7 +52,7 @@
                                                 </a>
                                                 <a class="dropdown-item" href="{{ route('contact.update', $con->id) }}"
                                                     data-bs-toggle="modal" data-bs-target="#attach{{ $con->id }}">
-                                                    اضافة مرفقات
+                                                    <i class="bi bi-paperclip"></i>  أضافة مرفقات
                                                 </a>
                                                 <a class="dropdown-item" href="{{ route('send-email', $con->id) }}">
                                                     <i class="bi bi-arrow-repeat"></i> إعادة توجيه
