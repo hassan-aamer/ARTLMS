@@ -76,7 +76,7 @@
                                             aria-labelledby="link{{ $con->id }}" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered">
                                                 <div class="modal-content">
-                                                    <form action="{{ route('contact.attach', $con->id) }}" method="POST"
+                                                    <form action="{{ route('attach', $con->id) }}" method="POST"
                                                         enctype="multipart/form-data">
                                                         @csrf
                                                         <div class="modal-header">
@@ -84,7 +84,7 @@
                                                                 placeholder="إضافة صورة (jpg-png-eps-pdf-svg-webp-gif)"
                                                                 readonly>
                                                             <input class="form-control" id="fileInput" type="file"
-                                                                name="image" hidden 
+                                                                name="image" hidden
                                                                 accept=".jpg,.jpeg,.png,.eps,.pdf,.svg,.webp,.gif">
                                                         </div>
                                                         <div class="modal-header">

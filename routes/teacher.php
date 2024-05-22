@@ -11,7 +11,6 @@ Route::post('/register', [AuthController::class, 'register'])->name('website.tea
 Route::get('/login', [AuthController::class, 'login_page'])->name('website.teacher.login_page');
 Route::post('/login', [AuthController::class, 'login'])->name('website.teacher.login');
 
-Route::post('contacts/{id}/add-attach', ['App\Http\Controllers\AdminControllers\ContactController'::class, 'addAttach'])->name('contact.attach');
 
 
 /*All Teacher Routes List*/
