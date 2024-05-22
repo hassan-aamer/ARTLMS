@@ -86,7 +86,7 @@ class ContactController extends Controller
     }
 
     public function addAttach(Request $request, $id)
-    {   return $request;
+    {   dd('hh');
         DB::beginTransaction();
         try {
             $contact = Contact::findOrFail($id);
