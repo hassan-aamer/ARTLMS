@@ -85,7 +85,41 @@ class ContactController extends Controller
         }
     }
 
+    public function att(Request $request, $id)
+    {   dd('hh');
+        DB::beginTransaction();
+        try {
+            $contact = Contact::findOrFail($id);
 
+
+            $contactFileData = [
+                'contact_id' => $contact->id,
+                'url' => $request->url,
+                'link' => $request->link,
+                'description' => $request->description,
+                'title' => $request->title,
+            ];
+
+            if ($request->hasFile('image')) {
+                $imagePath = $request->file('image')->store('images', 'images');
+                $contactFileData['image'] = $imagePath;
+            }
+
+            if ($request->hasFile('file')) {
+                $filePath = $request->file('file')->store('files', 'images');
+                $contactFileData['file'] = $filePath;
+            }
+
+            ContactFile::create($contactFileData);
+
+            DB::commit();
+
+            return redirect()->back()->with(['success' => 'تم اضافة المرفقات']);
+        } catch (\Exception $e) {
+            DB::rollback();
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
+    }
 
 
     public function send(Request $request, $id)
