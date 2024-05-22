@@ -76,7 +76,7 @@
                                             aria-labelledby="link{{ $con->id }}" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered">
                                                 <div class="modal-content">
-                                                    <form action="{{ route('attach', $con->id) }}" method="POST"
+                                                    <form action="{{ route('add.att', $con->id) }}" method="POST"
                                                         enctype="multipart/form-data">
                                                         @csrf
                                                         <div class="modal-header">
@@ -153,7 +153,7 @@
                                             aria-labelledby="link{{ $con->id }}" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered">
                                                 <div class="modal-content">
-                                                    {{-- <form action="{{ route('contact.send', $con->id) }}" method="POST"> --}}
+                                                    <form action="{{ route('contact.send', $con->id) }}" method="POST">
                                                         @csrf
                                                         <div class="modal-header">
                                                             <input class="form-control" name="message"
