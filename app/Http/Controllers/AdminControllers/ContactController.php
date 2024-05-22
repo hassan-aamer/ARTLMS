@@ -15,6 +15,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\ArticleRequest;
+use App\Models\ContactFile;
 use Illuminate\Support\Facades\Storage;
 
 class ContactController extends Controller
@@ -83,6 +84,54 @@ class ContactController extends Controller
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
     }
+
+    public function addAttach(Request $request, $id)
+    {
+        DB::beginTransaction();
+        try {
+            $contact = Contact::findOrFail($id);
+
+            // حذف الملفات والصور السابقة المتعلقة بجهة الاتصال
+            $existingFiles = ContactFile::where('contact_id', $contact->id)->get();
+            foreach ($existingFiles as $file) {
+                if ($file->image) {
+                    Storage::disk('public')->delete($file->image);
+                }
+                if ($file->file) {
+                    Storage::disk('public')->delete($file->file);
+                }
+                $file->delete();
+            }
+
+            $contactFileData = [
+                'contact_id' => $contact->id,
+                'url' => $request->url,
+                'link' => $request->link,
+                'description' => $request->description,
+                'title' => $request->title,
+            ];
+
+            if ($request->hasFile('image')) {
+                $imagePath = $request->file('image')->store('images', 'images');
+                $contactFileData['image'] = $imagePath;
+            }
+
+            if ($request->hasFile('file')) {
+                $filePath = $request->file('file')->store('files', 'images');
+                $contactFileData['file'] = $filePath;
+            }
+
+            ContactFile::create($contactFileData);
+
+            DB::commit();
+
+            return redirect()->back()->with(['success' => 'تم اضافة المرفقات']);
+        } catch (\Exception $e) {
+            DB::rollback();
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
+    }
+
 
     public function send(Request $request, $id)
     {
