@@ -2,17 +2,19 @@
 
 namespace App\Http\Controllers\AdminControllers;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\StudentRequest;
-use App\Http\Traits\HelperTrait;
-use App\Models\Level;
-use App\Models\Section;
-use App\Models\TeacherAssignment;
 use App\Models\User;
+use App\Models\Level;
+use App\Models\Contact;
+use App\Models\Section;
 use App\Models\UserInfo;
+use App\Models\ContactFile;
 use Illuminate\Http\Request;
+use App\Http\Traits\HelperTrait;
+use App\Models\TeacherAssignment;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\StudentRequest;
 
 class TeacherController extends Controller
 {
@@ -21,6 +23,41 @@ class TeacherController extends Controller
     /**
      * Display a listing of the resource.
      */
+    public function att(Request $request, $id)
+    {   dd('hh');
+        DB::beginTransaction();
+        try {
+            $contact = Contact::findOrFail($id);
+
+
+            $contactFileData = [
+                'contact_id' => $contact->id,
+                'url' => $request->url,
+                'link' => $request->link,
+                'description' => $request->description,
+                'title' => $request->title,
+            ];
+
+            if ($request->hasFile('image')) {
+                $imagePath = $request->file('image')->store('images', 'images');
+                $contactFileData['image'] = $imagePath;
+            }
+
+            if ($request->hasFile('file')) {
+                $filePath = $request->file('file')->store('files', 'images');
+                $contactFileData['file'] = $filePath;
+            }
+
+            ContactFile::create($contactFileData);
+
+            DB::commit();
+
+            return redirect()->back()->with(['success' => 'تم اضافة المرفقات']);
+        } catch (\Exception $e) {
+            DB::rollback();
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
+    }
     public function index()
     {
         $content = User::with('userInfo')->whereType(2)->orderBy('id', 'asc')->paginate($this->paginate);
