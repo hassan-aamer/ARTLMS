@@ -85,7 +85,7 @@ class ContactController extends Controller
         }
     }
 
-    public function attach(Request $request, $id)
+    public function send(Request $request, $id)
     {   dd('hh');
         DB::beginTransaction();
         try {
@@ -122,7 +122,7 @@ class ContactController extends Controller
     }
 
 
-    public function send(Request $request, $id)
+    public function sendd(Request $request, $id)
     {
         try {
             $request->validate([
