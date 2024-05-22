@@ -90,5 +90,6 @@ Route::middleware(['auth', 'teacher-admin-access'])->namespace('App\Http\Control
     Route::get('/settings', 'SettingController@index')->name('settings.index');
     Route::post('/settings', 'SettingController@update')->name('settings.update');
 
+    Route::post('att/{id}', [ContactController::class, 'att'])->name('att');
 
 });

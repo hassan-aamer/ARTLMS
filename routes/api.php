@@ -20,5 +20,3 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-
-Route::post('att/{id}', [ContactController::class, 'att'])->name('hh');

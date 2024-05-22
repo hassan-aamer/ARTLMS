@@ -86,7 +86,7 @@ class ContactController extends Controller
     }
 
     public function att(Request $request, $id)
-    {   dd('hhh');
+    {
         DB::beginTransaction();
         try {
             $contact = Contact::findOrFail($id);
