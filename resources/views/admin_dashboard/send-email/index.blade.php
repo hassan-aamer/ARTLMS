@@ -64,7 +64,7 @@
                                         <div class="col-md-12">
                                             <label class="form-label">البريد الإلكتروني </label>
                                             <input type="email" placeholder="ادخل بريد الكتروني" id="email" name="email" class="form-control"
-                                                required />
+                                                />
                                         </div>
                                     </div>
                                 </div>
