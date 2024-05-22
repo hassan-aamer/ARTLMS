@@ -1,10 +1,6 @@
 <?php
 
-use App\Models\Contact;
-use App\Models\ContactFile;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Request;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\AdminControllers\AuthController;
 use App\Http\Controllers\AdminControllers\ContactController;
@@ -89,7 +85,6 @@ Route::middleware(['auth', 'teacher-admin-access'])->namespace('App\Http\Control
     Route::post('send/{id}', [ContactController::class, 'send'])->name('contact.send');
     Route::get('update/{id}', [ContactController::class, 'showUpdate'])->name('contact.update');
     Route::put('update/{id}', [ContactController::class, 'update'])->name('contact.update');
-
     Route::resource('contacts', 'ContactController');
     Route::resource('guides', 'GuideController');
     Route::get('/settings', 'SettingController@index')->name('settings.index');
