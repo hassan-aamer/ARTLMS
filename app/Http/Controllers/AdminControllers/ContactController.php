@@ -85,7 +85,7 @@ class ContactController extends Controller
         }
     }
 
-    public function addAttach(Request $request, $id)
+    public function attach(Request $request, $id)
     {   dd('hh');
         DB::beginTransaction();
         try {
