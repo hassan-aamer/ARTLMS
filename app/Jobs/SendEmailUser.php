@@ -39,7 +39,9 @@ class SendEmailUser implements ShouldQueue
 
         $emails = User::whereIn('id', $userIds)->pluck('email')->toArray();
 
-        $emails[] = $this->email;
+        if ($this->email) {
+            $emails[] = $this->email;
+        }
 
         Mail::to($emails)->send(new SendEmailUsers($contactDetails));
 

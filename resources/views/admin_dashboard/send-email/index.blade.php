@@ -55,7 +55,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex align-items-center">
-                            <h5 class="mb-0"> <i class="bi bi-grid-fill"></i> ادخل بريد من الخارج لارسال الرسالة اليه</h5>
+                            <h5 class="mb-0"> <i class="bi bi-grid-fill"></i>  ادخل بريد من خارج المنصة لارسال الرسالة اليه  <span class="text-danger">(أختياري)</span> </h5>
                         </div>
                         <div class="row g-3 mt-4">
                             <div class="col-12">
