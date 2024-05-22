@@ -21,6 +21,10 @@ Route::middleware(['auth', 'teacher-admin-access'])->namespace('App\Http\Control
     Route::get('send-email/{id}', 'SendEmailController@index')->name('send-email');
     Route::resource('sendEmail', 'SendEmailController');
 
+
+    
+    Route::post('/contacts/{id}/add-attach', [ContactController::class, 'addAttach'])->name('contact.attach');
+
     //teachers
     Route::resource('teachers', 'TeacherController');
     Route::post('teachers/assignments/{id}', 'TeacherController@assignments')
@@ -85,7 +89,6 @@ Route::middleware(['auth', 'teacher-admin-access'])->namespace('App\Http\Control
     Route::post('send/{id}', [ContactController::class, 'send'])->name('contact.send');
     Route::get('update/{id}', [ContactController::class, 'showUpdate'])->name('contact.update');
     Route::put('update/{id}', [ContactController::class, 'update'])->name('contact.update');
-    Route::post('/contacts/{id}/add-attach', [ContactController::class, 'addAttach'])->name('contact.attach');
     Route::resource('contacts', 'ContactController');
     Route::resource('guides', 'GuideController');
     Route::get('/settings', 'SettingController@index')->name('settings.index');
