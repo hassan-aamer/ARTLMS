@@ -18,14 +18,16 @@ class SendEmailUser implements ShouldQueue
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     protected $contactMessageId;
+    protected $email;
     protected $teacherIds;
     protected $studentIds;
 
-    public function __construct($contactMessageId, $teacherIds, $studentIds)
+    public function __construct($contactMessageId, $teacherIds, $studentIds,$email)
     {
         $this->contactMessageId = $contactMessageId;
         $this->teacherIds = $teacherIds;
         $this->studentIds = $studentIds;
+        $this->email = $email;
     }
 
     public function handle()
@@ -36,6 +38,8 @@ class SendEmailUser implements ShouldQueue
         $userIds = array_merge($this->teacherIds, $this->studentIds);
 
         $emails = User::whereIn('id', $userIds)->pluck('email')->toArray();
+
+        $emails[] = $this->email;
 
         Mail::to($emails)->send(new SendEmailUsers($contactDetails));
 

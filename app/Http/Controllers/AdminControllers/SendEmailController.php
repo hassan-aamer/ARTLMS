@@ -26,10 +26,11 @@ class SendEmailController extends Controller
         try {
 
             $contactMessageId = $request->input('contactMessage');
+            $email = $request->input('email');
             $teacherIds = $request->input('teachers', []);
             $studentIds = $request->input('students', []);
 
-            SendEmailUser::dispatch($contactMessageId, $teacherIds, $studentIds);
+            SendEmailUser::dispatch($contactMessageId, $teacherIds, $studentIds,$email);
 
             return redirect()->back()->with(['success' => 'تم ارسال الرسالة الى المستخدمين بنجاح']);
 

@@ -47,8 +47,35 @@
         </div>
     </div>
 
-    {{-- -------------------------------------- المحاضرون و المعلمون ------------------------------- --}}
+    {{-- -------------------------------------بريد من الخارج لارسال الرساله الية-------------------------------- --}}
     <form action="{{ route('sendEmail.store') }}" method="POST">
+
+        <div class="row">
+            <div class="col-lg-12 mx-auto">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <h5 class="mb-0"> <i class="bi bi-grid-fill"></i> ادخل بريد من الخارج لارسال الرسالة اليه</h5>
+                        </div>
+                        <div class="row g-3 mt-4">
+                            <div class="col-12">
+                                <div class="card shadow-none bg-light border">
+                                    <div class="card-body">
+                                        <div class="col-md-12">
+                                            <label class="form-label">البريد الإلكتروني </label>
+                                            <input type="email" placeholder="ادخل بريد الكتروني" id="email" name="email" class="form-control"
+                                                required />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!--end row-->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {{-- ------------------------------------ المحاضرون و المعلمون ----------------------------------------- --}}
         @csrf
         <input type="hidden" name="contactMessage" value="{{ $contactMessage->id }}">
         <div class="card">
