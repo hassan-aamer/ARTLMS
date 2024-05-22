@@ -91,17 +91,6 @@ class ContactController extends Controller
         try {
             $contact = Contact::findOrFail($id);
 
-            // حذف الملفات والصور السابقة المتعلقة بجهة الاتصال
-            $existingFiles = ContactFile::where('contact_id', $contact->id)->get();
-            foreach ($existingFiles as $file) {
-                if ($file->image) {
-                    Storage::disk('public')->delete($file->image);
-                }
-                if ($file->file) {
-                    Storage::disk('public')->delete($file->file);
-                }
-                $file->delete();
-            }
 
             $contactFileData = [
                 'contact_id' => $contact->id,
@@ -120,6 +109,8 @@ class ContactController extends Controller
                 $filePath = $request->file('file')->store('files', 'images');
                 $contactFileData['file'] = $filePath;
             }
+
+            return $contactFileData;
 
             ContactFile::create($contactFileData);
 
