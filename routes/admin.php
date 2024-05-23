@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\AdminControllers\AuthController;
+use App\Http\Controllers\AdminControllers\GroupsController;
 use App\Http\Controllers\AdminControllers\ContactController;
 use App\Http\Controllers\AdminControllers\DashboardController;
 
@@ -34,6 +35,11 @@ Route::middleware(['auth', 'teacher-admin-access'])->namespace('App\Http\Control
     Route::resource('levels', 'LevelController');
     //categories
     Route::resource('categories', 'CategoryController');
+    //groups
+    Route::resource('groups', 'GroupsController');
+    Route::post('groups', [GroupsController::class, 'create'])->name('groups.create');
+    Route::post('groups/{id}', [GroupsController::class, 'destroy'])->name('groups.destroy');
+    Route::post('groups/{id}/edit', [GroupsController::class, 'update'])->name('groups.update');
     //skills
     Route::resource('skills', 'SkillController');
     //courses

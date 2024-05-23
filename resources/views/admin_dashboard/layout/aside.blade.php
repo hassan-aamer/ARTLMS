@@ -71,6 +71,13 @@
                 </a>
             </li>
             <li>
+                <a href="{{ route('groups.index') }}">
+                    <div class="parent-icon"><i class="bi bi-grid-fill"></i>
+                    </div>
+                    <div class="menu-title">  المجموعات  </div>
+                </a>
+            </li>
+            <li>
                 <a href="#">
                     <div class="parent-icon"><i class="bi bi-grid-fill"></i>
                     </div>
