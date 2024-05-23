@@ -43,6 +43,13 @@
                 </a>
             </li>
             <li>
+                <a href="#">
+                    <div class="parent-icon"><i class="lni lni-users"></i>
+                    </div>
+                    <div class="menu-title"> الفنانون  </div>
+                </a>
+            </li>
+            <li>
                 <a href="{{ route('teachers.index')  }}">
                     <div class="parent-icon"><i class="lni lni-consulting"></i>
                     </div>
@@ -54,6 +61,20 @@
                     <div class="parent-icon"><i class="lni lni-google"></i>
                     </div>
                     <div class="menu-title"> اجتماعات المحاضرين و المعلمين </div>
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('units.index') }}">
+                    <div class="parent-icon"><i class="bi bi-grid-fill"></i>
+                    </div>
+                    <div class="menu-title">  الوحدات  </div>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <div class="parent-icon"><i class="bi bi-grid-fill"></i>
+                    </div>
+                    <div class="menu-title">  التقيمات  </div>
                 </a>
             </li>
         @else

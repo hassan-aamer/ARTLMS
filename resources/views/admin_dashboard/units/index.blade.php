@@ -40,11 +40,32 @@
                                     {{ $con->status == 'yes' ? 'مفعل' : 'غير مفعل' }}</span></td>
                             <td>{{$con->sort}}</td>
                             <td>
+
+
+                                <div class="btn-group">
+                                    <button type="button"
+                                        class="btn btn-outline-primary btn-sm dropdown-toggle budget-dropdown"
+                                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        العمليات
+                                    </button>
+                                    <div class="dropdown-menu">
+
+                                        <a class="dropdown-item" href="#">
+                                            <i class="bi bi-printer-fill"></i> تصدير طباعة
+                                        </a>
+                                        <a class="dropdown-item" href="{{route('units.edit', $con->id)}}">
+                                            <i class="bi bi-pencil-fill"></i>  تعديل
+                                        </a>
+                                        <a class="dropdown-item" href="#" data-bs-toggle="modal"
+                                            data-bs-target="#deleteItem{{ $con->id }}"
+                                            data-bs-toggle="tooltip">
+                                            <i class="bi bi-trash-fill"></i> حذف
+                                        </a>
+                                    </div>
+                                </div>
+
+
                                 <div class="table-actions d-flex align-items-center gap-3 fs-6">
-                                    <a href="{{route('units.edit', $con->id)}}" class="text-warning" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                       title="تعديل"><i class="bi bi-pencil-fill"></i></a>
-                                    <a href="javascript:;"  data-bs-toggle="modal" data-bs-target="#deleteItem{{$con->id}}" class="text-danger" data-bs-toggle="tooltip"
-                                       data-bs-placement="bottom" title="حذف"><i class="bi bi-trash-fill"></i></a>
                                     <div class="modal fade" id="deleteItem{{$con->id}}" tabindex="-1" aria-labelledby="link{{$con->id}}" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content">
