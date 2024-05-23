@@ -40,27 +40,29 @@ class AuthController extends Controller
         DB::beginTransaction();
         try {
             $created = User::create([
-                'type' =>3,
-                'name' =>$data['name'],
-                'email' =>$data['email'],
-                'second_email' =>$data['second_email'],
-                'password' =>Hash::make($data['password']),
+                'type' => 3,
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'second_email' => $data['second_email'],
+                'password' => Hash::make($data['password']),
             ]);
-            $data['status'] ='yes';
-            $this->createUserInfo($data,$created->id,$request, $type='created');
 
-            $encryptID = Crypt::encryptString($created->id);
-            $html = view('emails.verification_email', compact('created','encryptID'))->render();
-            sendEmail($created->email,'منصة فن',$html, 'تحقق البريد الإلكتروني');
+            Auth::login($created);
+
+            UserInfo::where('user_id', $created->id)->update(['login_count' => $created->userInfo?->login_count + 1]);
+
             DB::commit();
-            toastr()->success('تم ارسال رسالة التحقق علي بريدك الإلكتروني', 'نجح', ['timeOut' => 5000]);
-            return redirect()->back();
+
+            toastr()->success('تم تسجيل الدخول بنجاح', 'نجح', ['timeOut' => 8000]);
+            return redirect()->route('website.curriculums.index');
+
         } catch (\Exception $e) {
             DB::rollback();
-            toastr()->error($this->error, 'فشل', ['timeOut' => 5000]);
+            toastr()->error($e->getMessage(), 'فشل', ['timeOut' => 5000]);
             return redirect()->back();
         }
     }
+
 
 
     //login page
@@ -89,16 +91,6 @@ class AuthController extends Controller
         if($user->type != 'student')
         {
             toastr()->error('هذا الحساب ليس حساب متعلم', 'فشل', ['timeOut' => 8000]);
-            return redirect()->back();
-        }
-        elseif($user->email_verified_at == null)
-        {
-            toastr()->error('هذا الحساب غير مفعل راجع بريدك الإلكتروني', 'فشل', ['timeOut' => 8000]);
-            return redirect()->back();
-        }
-        elseif($user->userInfo?->status != 'yes')
-        {
-            toastr()->error('هذا الحساب غير نشط برجاء التواصل مع الأدمن', 'فشل', ['timeOut' => 8000]);
             return redirect()->back();
         }
 
