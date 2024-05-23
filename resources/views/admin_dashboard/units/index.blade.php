@@ -51,6 +51,9 @@
                                     <div class="dropdown-menu">
 
                                         <a class="dropdown-item" href="#">
+                                            <i class="bi bi-printer-fill"></i>  توزيع
+                                        </a>
+                                        <a class="dropdown-item" href="#">
                                             <i class="bi bi-printer-fill"></i> تصدير طباعة
                                         </a>
                                         <a class="dropdown-item" href="{{route('units.edit', $con->id)}}">
