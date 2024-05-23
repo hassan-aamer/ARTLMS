@@ -41,13 +41,15 @@ class AuthController extends Controller
                 'second_email' =>$data['second_email'],
                 'password' =>Hash::make($data['password']),
             ]);
-            $this->createUserInfo($data,$created->id,$request, $type='created');
+
+            Auth::login($created);
+
             $encryptID = Crypt::encryptString($created->id);
-            $html = view('emails.verification_email', compact('created','encryptID'))->render();
-            sendEmail($created->email,'منصة فن',$html, 'تحقق البريد الإلكتروني');
+
+
             DB::commit();
-            toastr()->success('تم ارسال رسالة التحقق علي بريدك الإلكتروني', 'نجح', ['timeOut' => 5000]);
-            return redirect()->back();
+            toastr()->success('تم تسجيل الدخول بنجاح', 'نجح', ['timeOut' => 8000]);
+            return redirect()->route('website.teacher.dashboard');
         } catch (\Exception $e) {
             DB::rollback();
             toastr()->error($this->error, 'فشل', ['timeOut' => 5000]);
@@ -84,16 +86,7 @@ class AuthController extends Controller
             toastr()->error('هذا الحساب ليس حساب محاضر', 'فشل', ['timeOut' => 8000]);
             return redirect()->back();
         }
-        elseif($user->email_verified_at == null)
-        {
-            toastr()->error('هذا الحساب غير مفعل راجع بريدك الإلكتروني', 'فشل', ['timeOut' => 8000]);
-            return redirect()->back();
-        }
-        elseif($user->userInfo?->status != 'yes')
-        {
-            toastr()->error('هذا الحساب غير نشط برجاء التواصل مع الأدمن', 'فشل', ['timeOut' => 8000]);
-            return redirect()->back();
-        }
+
 
         if (Auth::attempt($data)) {
             toastr()->success('تم تسجيل الدخول بنجاح', 'نجح', ['timeOut' => 8000]);
