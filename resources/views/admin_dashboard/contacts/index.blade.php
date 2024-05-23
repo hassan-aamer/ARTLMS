@@ -109,9 +109,6 @@
                                                             <button type="submit" class="btn btn-outline-danger btn-sm">ارسال</button>
                                                         </div>
                                                     </form>
-
-
-
                                                 </div>
                                             </div>
                                         </div>
