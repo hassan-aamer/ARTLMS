@@ -52,8 +52,7 @@ class StudentController extends Controller
             ]);
             $this->createUserInfo($data,$created->id,$request, $type='created');
             DB::commit();
-            toastr()->success($this->insertMsg, 'نجح', ['timeOut' => 5000]);
-            return redirect()->back();
+            return redirect()->back()->with(['success' => 'نجح   ']);
         } catch (\Exception $e) {
             DB::rollback();
             toastr()->error($this->error, 'فشل', ['timeOut' => 5000]);
@@ -91,8 +90,7 @@ class StudentController extends Controller
             $this->createUserInfo($data,$user->id,$request, $type='updated');
 
             DB::commit();
-            toastr()->success($this->updateMsg, 'نجح', ['timeOut' => 5000]);
-            return redirect()->back();
+            return redirect()->back()->with(['success' => 'تم التعديل  ']);
         } catch (\Exception $e) {
             DB::rollback();
             toastr()->error($this->error, 'فشل', ['timeOut' => 5000]);
@@ -109,15 +107,15 @@ class StudentController extends Controller
 
         $content->userInfo->delete();
         $content->delete();
-        toastr()->success($this->deleteMsg, 'نجح', ['timeOut' => 5000]);
-        return redirect()->back();
+
+        return redirect()->back()->with(['success' => 'تم الحذف  ']);
     }
 
 
     //
     public function createUserInfo($data,$userID, $request, $type)
     {
-     
+
         $someData = [
             'user_id'=>$userID,
             'phone' =>$data['phone'],

@@ -47,19 +47,15 @@ class AuthController extends Controller
                 'password' => Hash::make($data['password']),
             ]);
 
-            Auth::login($created);
+            $data['status'] ='no';
+            $this->createUserInfo($data,$created->id,$request, $type='created');
 
-            UserInfo::create([
-                'user_id' => $created->id,
-                'phone'=> $data ->phone,
-                'job_title'=> $data ->job_title,
-                'status'=> $data ->status,
-            ]);
+            // Auth::login($created);
+
 
             DB::commit();
 
-            toastr()->success('تم تسجيل الدخول بنجاح', 'نجح', ['timeOut' => 8000]);
-            return redirect()->route('website.curriculums.index');
+            return redirect()->route('website.index')->with(['success' => 'تم التسجيل بنجاح فى انتظار موافقة الادمن']);
 
         } catch (\Exception $e) {
             DB::rollback();
@@ -89,14 +85,20 @@ class AuthController extends Controller
 
         if(!$user)
         {
-            toastr()->error('البريد الإلكتروني أو كلمة المرور خاطئة', 'فشل', ['timeOut' => 8000]);
-            return redirect()->back();
+            return redirect()->back()->with(['error' => 'البريد الإلكتروني أو كلمة المرور خاطئة']);
         }
 
         if($user->type != 'student')
         {
-            toastr()->error('هذا الحساب ليس حساب متعلم', 'فشل', ['timeOut' => 8000]);
-            return redirect()->back();
+            return redirect()->back()->with(['error' => 'هذا الحساب ليس حساب متعلم']);
+        }
+        elseif($user->email_verified_at == null)
+        {
+            return redirect()->back()->with(['error' => 'هذا الحساب غير مفعل يرجى التواتصل مع الادمن']);
+        }
+        elseif($user->userInfo?->status != 'yes')
+        {
+            return redirect()->back()->with(['error' => 'هذا الحساب غير نشط يرجى التواتصل مع الادمن']);
         }
 
         if (Auth::attempt($data)) {
@@ -220,6 +222,40 @@ class AuthController extends Controller
         return redirect('/');
     }
 
+    public function createUserInfo($data,$userID, $request, $type)
+    {
+
+        $someData = [
+            'user_id'=>$userID,
+            'phone' =>$data['phone'],
+            'group_type' =>$data['group_type'],
+            'date_of_birth' =>null,
+            'job_title' =>$data['job_title'],
+            'gender' =>$data['gender'],
+            'national_id'=>$data['national_id'],
+            'city'=>$data['city'],
+            'specialist' =>$data['specialist'],
+            'qualification'=>$data['qualification'],
+            'school_or_college'=>$data['school_or_college'],
+            'department'=>$data['department'],
+            'reason'=>$data['reason'],
+            'status'=>isset($data['status']) ? 'no' : 'yes',
+        ];
+          if($request->file('image'))
+        {
+            $image = $this->upload_file_helper_trait($request,'image', 'uploads/');
+             $someData['image'] = $image;
+        }
+        if($type == 'created')
+        {
+            $someData['level_id'] = $data['level_id'];
+            UserInfo::create($someData);
+        }
+        elseif($type == 'updated')
+        {
+            UserInfo::where('user_id', $userID)->update($someData);
+        }
+    }
 
 }
 
