@@ -48,7 +48,7 @@
                                         <div class="dropdown-menu">
                                             <a class="dropdown-item" href="{{route('students.edit', $con->id)}}"> قبول الإضافة </a>
                                             <a class="dropdown-item" href="#"> إضافة مجموعات</a>
-                                            <a class="dropdown-item" href="#"> توزيع المتعلمين فى المجموعات</a>
+                                            <a class="dropdown-item" href="#"> توزيع المتعلمون فى المجموعات</a>
                                             <a class="dropdown-item" href="#"><i class="bi bi-printer-fill"></i>طباعة</a>
                                             <a class="dropdown-item" href="{{route('students.edit', $con->id)}}" ><i class="bi bi-pencil-fill"></i> تعديل</a>
                                             <a class="dropdown-item" href="#"  data-bs-toggle="modal" data-bs-target="#deleteItem{{$con->id}}" data-bs-toggle="tooltip"><i class="bi bi-trash-fill"></i> حذف</a>
