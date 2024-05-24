@@ -74,6 +74,29 @@ class StudentController extends Controller
 
     }
 
+    public function addUser($id)
+    {
+        DB::beginTransaction();
+        try {
+        $user = User::with('userInfo')->whereType(3)->findOrFail($id);
+        UserInfo::where('user_id', $user->id)->update(['status'=>'yes']);
+        if (!$user->email_verified_at) {
+            $user->update([
+                'email_verified_at' => now(),
+            ]);
+
+        }
+
+        DB::commit();
+
+        return redirect()->route('students.index');
+        } catch (\Exception $e) {
+            DB::rollback();
+            toastr()->error($this->error, 'فشل', ['timeOut' => 5000]);
+            return redirect()->back();
+        }
+    }
+
 
     /**
      * Show the form for editing the specified resource.

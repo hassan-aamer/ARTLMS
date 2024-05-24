@@ -46,7 +46,7 @@
                                             العمليات
                                         </button>
                                         <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="{{route('students.edit', $con->id)}}" ><i class="bi bi-pencil-fill"></i> تعديل</a>
+                                            <a class="dropdown-item" href="{{route('students.add', $con->id)}}" ><i class="lni lni-users"></i> قبول</a>
                                             <a class="dropdown-item" href="#"  data-bs-toggle="modal" data-bs-target="#deleteItem{{$con->id}}" data-bs-toggle="tooltip"><i class="bi bi-trash-fill"></i> حذف</a>
                                         </div>
                                     </div>
