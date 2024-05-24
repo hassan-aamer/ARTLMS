@@ -1,5 +1,5 @@
 @extends('admin_dashboard.layout.master')
-@section('Page_Title')    ( المتعلمين )  @endsection
+@section('Page_Title','قائمة المتعلمين ')
 
 @section('content')
 
@@ -7,7 +7,7 @@
     <div class="card">
         <div class="card-body">
             <div class="d-flex align-items-center">
-                <h5 class="mb-0"> <i class="lni lni-users"></i> المتعلمون  </h5>
+                <h5 class="mb-0"> <i class="lni lni-users"></i> قائمة المتعلمين  </h5>
                 <div class="ms-auto position-relative">
                     <a href="{{route('students.create')}}" class="btnIcon btn btn-outline-primary px-5"><i class="lni lni-circle-plus"></i> أضف عنصر جديد </a>
                 </div>
@@ -17,7 +17,7 @@
                     <thead class="table-secondary">
                     <tr>
                         <th>#</th>
-                        <th>الإسم</th>
+                        <th>الأسم</th>
                         <th>المجموعة</th>
                         <th>البريد الإلكتروني</th>
                         <th> التحقق من الحساب </th>

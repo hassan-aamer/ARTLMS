@@ -49,7 +49,12 @@ class AuthController extends Controller
 
             Auth::login($created);
 
-            UserInfo::where('user_id', $created->id)->update(['login_count' => $created->userInfo?->login_count + 1]);
+            UserInfo::create([
+                'user_id' => $created->id,
+                'phone'=> $data ->phone,
+                'job_title'=> $data ->job_title,
+                'status'=> $data ->status,
+            ]);
 
             DB::commit();
 
