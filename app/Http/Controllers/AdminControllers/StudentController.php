@@ -21,8 +21,21 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $content = User::with('userInfo')->whereType(3)->orderBy('id', 'asc')->paginate($this->paginate);
-        return view('admin_dashboard.students.index' , compact('content'));
+        $content = User::whereType(3)
+            ->whereHas('userInfo', function ($query) {
+                $query->where('status', 'yes');
+            })->with('userInfo')->orderBy('id', 'asc')->paginate($this->paginate);
+
+        return view('admin_dashboard.students.index', compact('content'));
+    }
+    public function indexWith()
+    {
+        $content = User::whereType(3)
+            ->whereHas('userInfo', function ($query) {
+                $query->where('status', 'no');
+            })->with('userInfo')->orderBy('id', 'asc')->paginate($this->paginate);
+
+        return view('admin_dashboard.students.add', compact('content'));
     }
 
     /**
@@ -30,8 +43,8 @@ class StudentController extends Controller
      */
     public function create()
     {
-         $levels = Level::whereStatus('yes')->orderBy('sort', 'asc')->pluck('id', 'title');
-        return view('admin_dashboard.students.create',compact('levels'));
+        $levels = Level::whereStatus('yes')->orderBy('sort', 'asc')->pluck('id', 'title');
+        return view('admin_dashboard.students.create', compact('levels'));
     }
 
     /**
@@ -43,14 +56,14 @@ class StudentController extends Controller
         DB::beginTransaction();
         try {
             $created = User::create([
-                'type' =>3,
-                'name' =>$data['name'],
-                'email' =>$data['email'],
-                'email_verified_at' =>date('Y-m-d H:i:s'),
-                'second_email' =>$data['second_email'],
-                'password' =>Hash::make($data['password']),
+                'type' => 3,
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'email_verified_at' => date('Y-m-d H:i:s'),
+                'second_email' => $data['second_email'],
+                'password' => Hash::make($data['password']),
             ]);
-            $this->createUserInfo($data,$created->id,$request, $type='created');
+            $this->createUserInfo($data, $created->id, $request, $type = 'created');
             DB::commit();
             return redirect()->back()->with(['success' => 'نجح   ']);
         } catch (\Exception $e) {
@@ -67,9 +80,9 @@ class StudentController extends Controller
      */
     public function edit($id)
     {
-        $content =  User::with('userInfo')->whereType(3)->findOrFail($id);
-         $levels = Level::whereStatus('yes')->orderBy('sort', 'asc')->pluck('id', 'title');
-        return view('admin_dashboard.students.edit', compact('content','levels'));
+        $content = User::with('userInfo')->whereType(3)->findOrFail($id);
+        $levels = Level::whereStatus('yes')->orderBy('sort', 'asc')->pluck('id', 'title');
+        return view('admin_dashboard.students.edit', compact('content', 'levels'));
     }
 
     /**
@@ -77,17 +90,17 @@ class StudentController extends Controller
      */
     public function update(StudentRequest $request, $id)
     {
-        $user =  User::with('userInfo')->whereType(3)->findOrFail($id);
+        $user = User::with('userInfo')->whereType(3)->findOrFail($id);
         $data = $request->validated();
         DB::beginTransaction();
         try {
             $user->update([
-                'name' =>$data['name'],
-                'email' =>$data['email'],
-                'second_email' =>$data['second_email'],
-                'email_verified_at' =>isset($data['email_verified_at']) ? date('Y-m-d H:i:s') : NULL,
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'second_email' => $data['second_email'],
+                'email_verified_at' => isset($data['email_verified_at']) ? date('Y-m-d H:i:s') : NULL,
             ]);
-            $this->createUserInfo($data,$user->id,$request, $type='updated');
+            $this->createUserInfo($data, $user->id, $request, $type = 'updated');
 
             DB::commit();
             return redirect()->back()->with(['success' => 'تم التعديل  ']);
@@ -103,7 +116,7 @@ class StudentController extends Controller
      */
     public function destroy($id)
     {
-        $content =  User::whereType(3)->findOrFail($id);
+        $content = User::whereType(3)->findOrFail($id);
 
         $content->userInfo->delete();
         $content->delete();
@@ -113,37 +126,33 @@ class StudentController extends Controller
 
 
     //
-    public function createUserInfo($data,$userID, $request, $type)
+    public function createUserInfo($data, $userID, $request, $type)
     {
 
         $someData = [
-            'user_id'=>$userID,
-            'phone' =>$data['phone'],
-            'group_type' =>$data['group_type'],
-            'date_of_birth' =>null,
-            'job_title' =>$data['job_title'],
-            'gender' =>$data['gender'],
-            'national_id'=>$data['national_id'],
-            'city'=>$data['city'],
-            'specialist' =>$data['specialist'],
-            'qualification'=>$data['qualification'],
-            'school_or_college'=>$data['school_or_college'],
-            'department'=>$data['department'],
-            'reason'=>$data['reason'],
-            'status'=>isset($data['status']) ? 'yes' : 'no',
+            'user_id' => $userID,
+            'phone' => $data['phone'],
+            'group_type' => $data['group_type'],
+            'date_of_birth' => null,
+            'job_title' => $data['job_title'],
+            'gender' => $data['gender'],
+            'national_id' => $data['national_id'],
+            'city' => $data['city'],
+            'specialist' => $data['specialist'],
+            'qualification' => $data['qualification'],
+            'school_or_college' => $data['school_or_college'],
+            'department' => $data['department'],
+            'reason' => $data['reason'],
+            'status' => isset($data['status']) ? 'yes' : 'no',
         ];
-          if($request->file('image'))
-        {
-            $image = $this->upload_file_helper_trait($request,'image', 'uploads/');
-             $someData['image'] = $image;
+        if ($request->file('image')) {
+            $image = $this->upload_file_helper_trait($request, 'image', 'uploads/');
+            $someData['image'] = $image;
         }
-        if($type == 'created')
-        {
+        if ($type == 'created') {
             $someData['level_id'] = $data['level_id'];
             UserInfo::create($someData);
-        }
-        elseif($type == 'updated')
-        {
+        } elseif ($type == 'updated') {
             UserInfo::where('user_id', $userID)->update($someData);
         }
     }

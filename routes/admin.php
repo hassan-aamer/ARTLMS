@@ -20,6 +20,7 @@ Route::middleware(['auth', 'teacher-admin-access'])->namespace('App\Http\Control
     //students
     Route::resource('students', 'StudentController');
     Route::get('send-email/{id}', 'SendEmailController@index')->name('send-email');
+    Route::get('studenth', 'StudentController@indexWith')->name('indexWith');
     Route::resource('sendEmail', 'SendEmailController');
 
     //teachers

@@ -40,6 +40,11 @@
                     <div class="parent-icon"><i class="lni lni-users"></i>
                     </div>
                     <div class="menu-title"> المتعلمون  </div>
+                    {{-- @if(messages() > 0)
+                        <span style="background: red;padding: 1px 6px;position: absolute;left: 15px;color: #fff;}">
+                            {{ messages()}}
+                        </span>
+                    @endif --}}
                 </a>
             </li>
             <li>

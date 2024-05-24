@@ -1,5 +1,5 @@
 @extends('admin_dashboard.layout.master')
-@section('Page_Title','قائمة المتعلمين ')
+@section('Page_Title','قائمة طلبات تسجيل المتعلمين ')
 
 @section('content')
 
@@ -7,16 +7,7 @@
     <div class="card">
         <div class="card-body">
             <div class="d-flex align-items-center">
-                <h5 class="mb-0"> <i class="lni lni-users"></i> قائمة المتعلمين  </h5>
-                <div class="ms-auto position-relative">
-                    <a href="{{route('indexWith')}}" class="btnIcon btn btn-outline-primary "><i class="lni lni-users"></i> قبول الاضافة</a>
-                    {{-- @if($content->count() > 0)
-                        <span style="background: red;padding: 1px 6px;position: absolute;left: 15px;color: #fff;">
-                            {{ $content }}
-                        </span>
-                    @endif --}}
-                </div>
-
+                <h5 class="mb-0"> <i class="lni lni-users"></i> قائمة طلبات تسجيل المتعلمين  </h5>
                 <div class="ms-auto position-relative">
                     <a href="{{route('students.create')}}" class="btnIcon btn btn-outline-primary px-5"><i class="lni lni-circle-plus"></i> أضف عنصر جديد </a>
                 </div>
@@ -55,10 +46,6 @@
                                             العمليات
                                         </button>
                                         <div class="dropdown-menu">
-                                            {{-- <a class="dropdown-item" href="{{route('indexWith')}}"> قبول الإضافة </a> --}}
-                                            <a class="dropdown-item" href="#"> إضافة مجموعات</a>
-                                            <a class="dropdown-item" href="#"> توزيع المتعلمون فى المجموعات</a>
-                                            <a class="dropdown-item" href="#"><i class="bi bi-printer-fill"></i>طباعة</a>
                                             <a class="dropdown-item" href="{{route('students.edit', $con->id)}}" ><i class="bi bi-pencil-fill"></i> تعديل</a>
                                             <a class="dropdown-item" href="#"  data-bs-toggle="modal" data-bs-target="#deleteItem{{$con->id}}" data-bs-toggle="tooltip"><i class="bi bi-trash-fill"></i> حذف</a>
                                         </div>
