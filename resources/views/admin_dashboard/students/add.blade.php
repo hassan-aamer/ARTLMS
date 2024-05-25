@@ -47,7 +47,33 @@
                                         </button>
                                         <div class="dropdown-menu">
                                             <a class="dropdown-item" href="{{route('students.add', $con->id)}}" ><i class="lni lni-users"></i> قبول</a>
+                                            <a class="dropdown-item" href="#" data-bs-toggle="modal"
+                                                    data-bs-target="#sendmessage{{ $con->id }}">
+                                                    <i class="bi bi-reply"></i> الرد
+                                                </a>
+                                            <a class="dropdown-item" href="{{route('students.edit', $con->id)}}" ><i class="bi bi-pencil-fill"></i> تعديل</a>
                                             <a class="dropdown-item" href="#"  data-bs-toggle="modal" data-bs-target="#deleteItem{{$con->id}}" data-bs-toggle="tooltip"><i class="bi bi-trash-fill"></i> حذف</a>
+                                        </div>
+                                    </div>
+
+                                    <div class="modal fade" id="sendmessage{{ $con->id }}" tabindex="-1"
+                                        aria-labelledby="link{{ $con->id }}" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <form action="{{ route('student-email', $con->id) }}" method="POST">
+                                                    @csrf
+                                                    <div class="modal-header">
+                                                        <input class="form-control" name="message"
+                                                            placeholder="اكتب الرساله" required />
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button class="btn btn-outline-default btn-sm me-2"
+                                                            type="button" data-bs-dismiss="modal">الغاء</button>
+                                                        <button type="submit"
+                                                            class="btn btn-outline-danger btn-sm">ارسال</button>
+                                                    </div>
+                                                </form>
+                                            </div>
                                         </div>
                                     </div>
 

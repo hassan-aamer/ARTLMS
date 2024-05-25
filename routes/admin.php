@@ -91,6 +91,7 @@ Route::middleware(['auth', 'teacher-admin-access'])->namespace('App\Http\Control
     Route::resource('article_categories', 'ArticleCategoryController');
     Route::resource('article_tags', 'ArticleTagController');
     Route::post('send/{id}', [ContactController::class, 'send'])->name('contact.send');
+    Route::post('student-email/{id}', 'StudentController@send')->name('student-email');
     Route::get('update/{id}', [ContactController::class, 'showUpdate'])->name('contact.update');
     Route::put('update/{id}', [ContactController::class, 'update'])->name('contact.update');
     Route::resource('contacts', 'ContactController');

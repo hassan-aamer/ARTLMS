@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers\AdminControllers;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\StudentRequest;
-use App\Http\Traits\HelperTrait;
 use App\Models\User;
 use App\Models\Level;
+use App\Mail\sendMail;
 use App\Models\UserInfo;
 use Illuminate\Http\Request;
+use App\Http\Traits\HelperTrait;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use App\Http\Requests\StudentRequest;
 
 class StudentController extends Controller
 {
@@ -178,6 +180,28 @@ class StudentController extends Controller
         } elseif ($type == 'updated') {
             UserInfo::where('user_id', $userID)->update($someData);
         }
+    }
+
+    public function send(Request $request, $id)
+    {
+        try {
+            $request->validate([
+                'message' => 'required|string',
+            ]);
+
+            $contact = User::find($id);
+
+            $email = $contact->email;
+            $message = $request->message;
+
+            Mail::to($email)->send(new sendMail($message));
+
+            return redirect()->back()->with(['success' => 'تم ارسال الرسالة بنجاح الى المتعلم']);
+
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
+
     }
 
 

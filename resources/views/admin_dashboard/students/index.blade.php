@@ -9,7 +9,7 @@
             <div class="d-flex align-items-center">
                 <h5 class="mb-0"> <i class="lni lni-users"></i> قائمة المتعلمين  </h5>
                 <div class="ms-auto position-relative">
-                    <a href="{{route('indexWith')}}" class="btnIcon btn btn-outline-primary "><i class="lni lni-users"></i> قبول الاضافة</a>
+                    <a href="{{route('indexWith')}}" class="btnIcon btn btn-outline-primary "><i class="lni lni-users"></i>  </a>
                     {{-- @if($content->count() > 0)
                         <span style="background: red;padding: 1px 6px;position: absolute;left: 15px;color: #fff;">
                             {{ $content }}
