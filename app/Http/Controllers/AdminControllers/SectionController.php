@@ -68,7 +68,7 @@ class SectionController extends Controller
         $data = $request->validated();
         $section->update($data);
         toastr()->success($this->updateMsg, 'نجح', ['timeOut' => 5000]);
-        return redirect()->back();
+        return redirect()->route('sections.index');
     }
 
     /**
