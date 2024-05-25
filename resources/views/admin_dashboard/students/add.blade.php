@@ -17,7 +17,7 @@
                     <thead class="table-secondary">
                     <tr>
                         <th>#</th>
-                        <th>الأسم</th>
+                        <th>الاسم</th>
                         <th>المجموعة</th>
                         <th>البريد الإلكتروني</th>
                         <th> التحقق من الحساب </th>
