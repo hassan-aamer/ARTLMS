@@ -133,5 +133,10 @@ class ContactController extends Controller
         }
 
     }
+    public function showAtt($id)
+    {
+        $contact = Contact::findOrFail($id);
+        return view('admin_dashboard.contacts.attatch',compact('contact'));
+    }
 
 }

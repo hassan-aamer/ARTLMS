@@ -50,8 +50,8 @@
                                                 <a class="dropdown-item" href="{{ route('contact.update', $con->id) }}">
                                                     <i class="bi bi-pencil-square"></i> تعديل الرسالة
                                                 </a>
-                                                <a class="dropdown-item" href="{{ route('contact.update', $con->id) }}"
-                                                    data-bs-toggle="modal" data-bs-target="#attach{{ $con->id }}">
+                                                <a class="dropdown-item" href="{{ route('show.att', $con->id) }}"
+                                                    >
                                                     <i class="bi bi-paperclip"></i>  إضافة مرفقات
                                                 </a>
                                                 <a class="dropdown-item" href="{{ route('send-email', $con->id) }}">
@@ -72,46 +72,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="modal fade" id="attach{{ $con->id }}" tabindex="-1"
-                                            aria-labelledby="link{{ $con->id }}" aria-hidden="true">
-                                            <div class="modal-dialog modal-dialog-centered">
-                                                <div class="modal-content">
-                                                    <form action="{{ route('att', $con->id) }}" method="POST" enctype="multipart/form-data">
-                                                        @csrf
-                                                        <div class="modal-header flex-column">
-                                                            <label for="fileInput">إضافة صورة (jpg-png-eps-pdf-svg-webp-gif)</label>
-                                                            <input class="form-control" id="triggerInput" placeholder="إضافة صورة (jpg-png-eps-pdf-svg-webp-gif)" readonly>
-                                                            <input class="form-control" id="fileInput" type="file" name="image" hidden accept=".jpg,.jpeg,.png,.eps,.pdf,.svg,.webp,.gif">
-                                                        </div>
-                                                        <div class="modal-header flex-column">
-                                                            <label for="urlInput">إضافة رابط فيديو أو أكثر</label>
-                                                            <input class="form-control" id="urlInput" type="text" name="url" placeholder="إضافة رابط فيديو أو أكثر" >
-                                                        </div>
-                                                        <div class="modal-header flex-column">
-                                                            <label for="linkInput">إضافة رابط فيديو تفاعلي أو أكثر</label>
-                                                            <input class="form-control" id="linkInput" type="text" name="link" placeholder="إضافة رابط فيديو تفاعلي أو أكثر" >
-                                                        </div>
-                                                        <div class="modal-header flex-column">
-                                                            <label for="fileInputt">إضافة ملفات</label>
-                                                            <input class="form-control" id="triggerInputt" type="text" placeholder="إضافة ملفات" readonly style="margin-bottom: 8px;">
-                                                            <input class="form-control" id="fileInputt" type="file" name="file" required accept="application/pdf" hidden>
-                                                        </div>
-                                                        <div class="modal-header flex-column">
-                                                            <label for="descriptionInput">إضافة التوصيف المقالي</label>
-                                                            <input class="form-control" id="descriptionInput" type="text" name="description" placeholder="إضافة التوصيف المقالي" >
-                                                        </div>
-                                                        <div class="modal-header flex-column">
-                                                            <label for="titleInput">إضافة وصف النطاق</label>
-                                                            <input class="form-control" id="titleInput" type="text" name="title" placeholder="إضافة وصف النطاق" >
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button class="btn btn-outline-default btn-sm me-2" type="button" data-bs-dismiss="modal">الغاء</button>
-                                                            <button type="submit" class="btn btn-outline-danger btn-sm">ارسال</button>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
+
 
                                         <div class="modal fade" id="deleteItem{{ $con->id }}" tabindex="-1"
                                             aria-labelledby="link{{ $con->id }}" aria-hidden="true">
