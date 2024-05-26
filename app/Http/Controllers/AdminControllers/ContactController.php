@@ -78,32 +78,30 @@ class ContactController extends Controller
     {
         DB::beginTransaction();
         try {
-            $contact = Contact::findOrFail($id);
+        $contact = Contact::findOrFail($id);
+        $contactFileData = [
+            'contact_id' => $contact->id,
+            'url' => implode(', ', $request['url']),
+            'link' => implode(', ', $request['link']),
+            'description' => $request->description,
+            'title' => $request->title,
+        ];
 
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('images', 'images');
+            $contactFileData['image'] = $imagePath;
+        }
 
-            $contactFileData = [
-                'contact_id' => $contact->id,
-                'url' => $request->url,
-                'link' => $request->link,
-                'description' => $request->description,
-                'title' => $request->title,
-            ];
+        if ($request->hasFile('file')) {
+            $filePath = $request->file('file')->store('files', 'images');
+            $contactFileData['file'] = $filePath;
+        }
 
-            if ($request->hasFile('image')) {
-                $imagePath = $request->file('image')->store('images', 'images');
-                $contactFileData['image'] = $imagePath;
-            }
+        ContactFile::create($contactFileData);
 
-            if ($request->hasFile('file')) {
-                $filePath = $request->file('file')->store('files', 'images');
-                $contactFileData['file'] = $filePath;
-            }
+        DB::commit();
 
-            ContactFile::create($contactFileData);
-
-            DB::commit();
-
-            return redirect()->back()->with(['success' => 'تم اضافة المرفقات']);
+        return redirect()->back()->with(['success' => 'تم اضافة المرفقات']);
         } catch (\Exception $e) {
             DB::rollback();
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
@@ -136,7 +134,7 @@ class ContactController extends Controller
     public function showAtt($id)
     {
         $contact = Contact::findOrFail($id);
-        return view('admin_dashboard.contacts.attatch',compact('contact'));
+        return view('admin_dashboard.contacts.attatch', compact('contact'));
     }
 
 }
