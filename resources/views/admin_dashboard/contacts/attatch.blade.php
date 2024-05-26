@@ -28,8 +28,8 @@
                                         </div>
 
                                         <div class="col-12">
-                                            <label class="form-label"> رابط الفيديو  </label>
-                                            <input type="text" name="url" class="form-control"  placeholder=" رابط الفيديو ">
+                                            <label class="form-label"> رابط الفيديو تفاعلي </label>
+                                            <input type="text" name="url" class="form-control"  placeholder=" رابط الفيديو " >
                                         </div>
 
                                         <div class="col-12">
@@ -39,15 +39,14 @@
 
 
                                         <div class="col-12">
-                                            <label for="titleInput">إضافة وصف النطاق</label>
+                                            <label for="titleInput"> وصف الميتا الخاص بال SEO</label>
                                             <input class="form-control" id="titleInput" type="text" name="title" placeholder="إضافة وصف النطاق" >
                                         </div>
-
-
                                         <div class="col-12">
-                                            <label class="form-label"> وصف مختصر <span class="text-danger">*</span></label>
-                                            <textarea required name="description" class="form-control ckeditor" placeholder="وصف مختصر" rows="4" cols="4"></textarea>
+                                            <label for="titleInput"> الكلمات الدلالية الخاصة بال SEO</label>
+                                            <input class="form-control" id="titleInput" type="text" name="description" placeholder="إضافة وصف النطاق" >
                                         </div>
+
 
                                         @include('admin_dashboard.inputs.add_btn')
                                     </form>
