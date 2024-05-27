@@ -39,9 +39,12 @@
 
                                         <div class="col-md-12">
                                             <label class="form-label">المجموعة<span class="text-danger">*</span> </label>
-                                            <select class="form-control" name="group_type" required>
-                                                <option value="d" @if($content->userInfo?->group_type == 'd') selected @endif > مجموعة ضابطة </option>
-                                                <option value="t" @if($content->userInfo?->group_type == 't') selected @endif> مجموعة تجريبية </option>
+                                            <select class="form-control" name="group_id" required>
+                                                <option value=""> اختر نوع المجموعة </option>
+                                                @foreach ($groups as $group)
+                                                <option value="{{ $group->id }}"> {{ $group->name }} </option>
+                                                @endforeach
+
                                             </select>
                                         </div>
 

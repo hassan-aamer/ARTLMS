@@ -11,6 +11,7 @@ use App\Models\UserInfo;
 use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
+use App\Models\Group;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\DB;
@@ -29,8 +30,9 @@ class AuthController extends Controller
         {
             return redirect()->to('/');
         }
+        $groups = Group::all();
         $levels = Level::whereStatus('yes')->orderBy('sort', 'asc')->pluck('id', 'title');
-        return view('website.students.register',compact('levels'));
+        return view('website.students.register',compact('levels','groups'));
     }
 
     //register
@@ -42,6 +44,7 @@ class AuthController extends Controller
             $created = User::create([
                 'type' => 3,
                 'name' => $data['name'],
+                'group_id' => $data['group_id'],
                 'email' => $data['email'],
                 'second_email' => $data['second_email'],
                 'password' => Hash::make($data['password']),
@@ -228,7 +231,7 @@ class AuthController extends Controller
         $someData = [
             'user_id'=>$userID,
             'phone' =>$data['phone'],
-            'group_type' =>$data['group_type'],
+            // 'group_type' =>$data['group_type'],
             'date_of_birth' =>null,
             'job_title' =>$data['job_title'],
             'gender' =>$data['gender'],

@@ -31,8 +31,8 @@
                             <td>{{$con->id}}</td>
 
                             <td>{{$con->name}}</td>
-                            <td><span class="badge @if($con->userInfo?->group_type == 'd') bg-light-success text-success @else bg-light-warning text-warning @endif w-50">
-                                    {{ $con->userInfo?->group_type == 'd' ? 'مجموعة ضابطة' : ' مجموعة تجريبية' }}</span></td>
+                            <td><span class="badge  bg-light-warning text-warning w-50">
+                                    {{ $con->userInfo->group->name}}</span></td>
                             <td>{{$con->email}}</td>
                             <td><span class="badge @if($con->email_verified_at) bg-light-success text-success @else bg-light-danger text-danger @endif w-50">
                                     {{$con->email_verified_at ? ' مفعل ' : ' غير مفعل' }}</span></td>

@@ -19,4 +19,9 @@ class UserInfo extends Model
         return $this->belongsTo('App\Models\Section', 'section_id');
     }
 
+    public function group()
+    {
+        return $this->belongsTo(Group::class);
+    }
+
 }

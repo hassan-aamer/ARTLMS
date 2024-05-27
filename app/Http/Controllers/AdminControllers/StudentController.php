@@ -3,12 +3,14 @@
 namespace App\Http\Controllers\AdminControllers;
 
 use App\Models\User;
+use App\Models\Group;
 use App\Models\Level;
 use App\Mail\sendMail;
 use App\Models\UserInfo;
 use Illuminate\Http\Request;
 use App\Http\Traits\HelperTrait;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
@@ -45,8 +47,9 @@ class StudentController extends Controller
      */
     public function create()
     {
+        $groups = Group::all();
         $levels = Level::whereStatus('yes')->orderBy('sort', 'asc')->pluck('id', 'title');
-        return view('admin_dashboard.students.create', compact('levels'));
+        return view('admin_dashboard.students.create', compact('levels','groups'));
     }
 
     /**
@@ -55,26 +58,29 @@ class StudentController extends Controller
     public function store(StudentRequest $request)
     {
         $data = $request->validated();
+        Log::info('Received data: ', $data);
+
         DB::beginTransaction();
         try {
             $created = User::create([
                 'type' => 3,
                 'name' => $data['name'],
                 'email' => $data['email'],
-                'email_verified_at' => date('Y-m-d H:i:s'),
+                'email_verified_at' => now(),
                 'second_email' => $data['second_email'],
                 'password' => Hash::make($data['password']),
             ]);
-            $this->createUserInfo($data, $created->id, $request, $type = 'created');
+
+            $this->createUserInfo($data, $created->id, $request, 'created');
             DB::commit();
-            return redirect()->back()->with(['success' => 'نجح   ']);
+            return redirect()->route('students.index')->with(['success' => 'نجح']);
         } catch (\Exception $e) {
             DB::rollback();
             toastr()->error($this->error, 'فشل', ['timeOut' => 5000]);
             return redirect()->back();
         }
-
     }
+
 
     public function addUser($id)
     {
@@ -105,9 +111,10 @@ class StudentController extends Controller
      */
     public function edit($id)
     {
+        $groups = Group::all();
         $content = User::with('userInfo')->whereType(3)->findOrFail($id);
         $levels = Level::whereStatus('yes')->orderBy('sort', 'asc')->pluck('id', 'title');
-        return view('admin_dashboard.students.edit', compact('content', 'levels'));
+        return view('admin_dashboard.students.edit', compact('content', 'levels','groups'));
     }
 
     /**
@@ -128,7 +135,7 @@ class StudentController extends Controller
             $this->createUserInfo($data, $user->id, $request, $type = 'updated');
 
             DB::commit();
-            return redirect()->back()->with(['success' => 'تم التعديل  ']);
+            return redirect()->route('students.index')->with(['success' => 'تم التعديل  ']);
         } catch (\Exception $e) {
             DB::rollback();
             toastr()->error($this->error, 'فشل', ['timeOut' => 5000]);
@@ -157,7 +164,7 @@ class StudentController extends Controller
         $someData = [
             'user_id' => $userID,
             'phone' => $data['phone'],
-            'group_type' => $data['group_type'],
+            'group_id' => $data['group_id'],
             'date_of_birth' => null,
             'job_title' => $data['job_title'],
             'gender' => $data['gender'],

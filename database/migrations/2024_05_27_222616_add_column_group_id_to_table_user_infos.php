@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->foreignId('group_id')->nullable()->constrained('groups')->cascadeOnUpdate()->cascadeOnDelete();
+        Schema::table('user_infos', function (Blueprint $table) {
+            $table->foreignId('group_id')->constrained('groups');
         });
     }
 
@@ -21,7 +21,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('user_infos', function (Blueprint $table) {
             //
         });
     }
