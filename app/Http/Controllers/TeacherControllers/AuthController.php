@@ -2,17 +2,19 @@
 
 namespace App\Http\Controllers\TeacherControllers;
 
-use App\Http\Requests\LoginRequest;
-use App\Http\Requests\StudentRequest;
-use App\Http\Traits\HelperTrait;
 use App\Models\User;
+use App\Models\Group;
+use App\Models\UserInfo;
 use Illuminate\Http\Request;
+use App\Http\Traits\HelperTrait;
 
+use Illuminate\Support\Facades\DB;
+use App\Http\Requests\LoginRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Crypt;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\StudentRequest;
+use Illuminate\Support\Facades\Crypt;
 
 class AuthController extends Controller
 {
@@ -25,7 +27,8 @@ class AuthController extends Controller
         {
             return redirect()->to('/');
         }
-        return view('website.teachers.register');
+        $groups = Group::all();
+        return view('website.teachers.register',compact('groups'));
     }
 
     //register
@@ -42,14 +45,13 @@ class AuthController extends Controller
                 'password' =>Hash::make($data['password']),
             ]);
 
-            Auth::login($created);
+            $data['status'] ='no';
+            $this->createUserInfo($data,$created->id,$request, $type='created');
 
-            $encryptID = Crypt::encryptString($created->id);
 
 
             DB::commit();
-            toastr()->success('تم تسجيل الدخول بنجاح', 'نجح', ['timeOut' => 8000]);
-            return redirect()->route('website.teacher.dashboard');
+            return redirect()->route('website.index')->with(['success' => 'تم التسجيل بنجاح فى انتظار موافقة الادمن']);
         } catch (\Exception $e) {
             DB::rollback();
             toastr()->error($this->error, 'فشل', ['timeOut' => 5000]);
@@ -86,6 +88,14 @@ class AuthController extends Controller
             toastr()->error('هذا الحساب ليس حساب محاضر', 'فشل', ['timeOut' => 8000]);
             return redirect()->back();
         }
+        elseif($user->email_verified_at == null)
+        {
+            return redirect()->back()->with(['error' => 'هذا الحساب غير مفعل يرجى التواتصل مع الادمن']);
+        }
+        elseif($user->userInfo?->status != 'yes')
+        {
+            return redirect()->back()->with(['error' => 'هذا الحساب غير نشط يرجى التواتصل مع الادمن']);
+        }
 
 
         if (Auth::attempt($data)) {
@@ -96,6 +106,7 @@ class AuthController extends Controller
         return redirect()->back();
 
     }
+
 
 
 

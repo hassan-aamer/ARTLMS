@@ -49,7 +49,7 @@ class StudentController extends Controller
     {
         $groups = Group::all();
         $levels = Level::whereStatus('yes')->orderBy('sort', 'asc')->pluck('id', 'title');
-        return view('admin_dashboard.students.create', compact('levels','groups'));
+        return view('admin_dashboard.students.create', compact('levels', 'groups'));
     }
 
     /**
@@ -86,18 +86,18 @@ class StudentController extends Controller
     {
         DB::beginTransaction();
         try {
-        $user = User::with('userInfo')->whereType(3)->findOrFail($id);
-        UserInfo::where('user_id', $user->id)->update(['status'=>'yes']);
-        if (!$user->email_verified_at) {
-            $user->update([
-                'email_verified_at' => now(),
-            ]);
+            $user = User::with('userInfo')->whereType(3)->findOrFail($id);
+            UserInfo::where('user_id', $user->id)->update(['status' => 'yes']);
+            if (!$user->email_verified_at) {
+                $user->update([
+                    'email_verified_at' => now(),
+                ]);
 
-        }
+            }
 
-        DB::commit();
+            DB::commit();
 
-        return redirect()->route('students.index');
+            return redirect()->route('students.index');
         } catch (\Exception $e) {
             DB::rollback();
             toastr()->error($this->error, 'فشل', ['timeOut' => 5000]);
@@ -114,7 +114,7 @@ class StudentController extends Controller
         $groups = Group::all();
         $content = User::with('userInfo')->whereType(3)->findOrFail($id);
         $levels = Level::whereStatus('yes')->orderBy('sort', 'asc')->pluck('id', 'title');
-        return view('admin_dashboard.students.edit', compact('content', 'levels','groups'));
+        return view('admin_dashboard.students.edit', compact('content', 'levels', 'groups'));
     }
 
     /**

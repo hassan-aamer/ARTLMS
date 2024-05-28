@@ -22,10 +22,12 @@ Route::middleware(['auth', 'teacher-admin-access'])->namespace('App\Http\Control
     Route::get('send-email/{id}', 'SendEmailController@index')->name('send-email');
     Route::get('studenth', 'StudentController@indexWith')->name('indexWith');
     Route::get('student/{id}', 'StudentController@addUser')->name('students.add');
+    Route::get('teacher/new/{id}', [\App\Http\Controllers\AdminControllers\TeacherController::class ,'addUser'])->name('teacher.add.new');
     Route::resource('sendEmail', 'SendEmailController');
 
     //teachers
     Route::resource('teachers', 'TeacherController');
+    Route::get('teacher/add', [\App\Http\Controllers\AdminControllers\TeacherController::class ,'indexWith'])->name('teacher.new');
     Route::post('teachers/assignments/{id}', 'TeacherController@assignments')
         ->name('teachers.assignments');
     //extensions

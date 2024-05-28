@@ -1,5 +1,5 @@
 @extends('admin_dashboard.layout.master')
-@section('Page_Title')  المحاضرون و المعلمون  @endsection
+@section('Page_Title','قائمة طلبات تسجيل المحاضرين ')
 
 @section('content')
 
@@ -7,18 +7,12 @@
     <div class="card">
         <div class="card-body">
             <div class="d-flex align-items-center">
-                <h5 class="mb-0"> <i class="lni lni-consulting"></i> المحاضرون و المعلمون </h5>
+                <h5 class="mb-0"> <i class="lni lni-users"></i> قائمة طلبات تسجيل المحاضرين  </h5>
                 <div class="ms-auto position-relative">
-                    <a href="{{ route('teacher.new') }}" class="btnIcon btn btn-outline-primary " ><i class="lni lni-users"></i>  </a>
-                </div>
-                <div class="ms-auto position-relative">
-                    <a href="#" id="print_Button" onclick="printDiv()" class="btnIcon btn btn-outline-primary ">طباعة  </a>
-                </div>
-                <div class="ms-auto position-relative">
-                    <a href="{{route('teachers.create')}}" class="btnIcon btn btn-outline-primary px-5"><i class="lni lni-circle-plus"></i> أضف عنصر جديد </a>
+                    <a href="{{route('students.create')}}" class="btnIcon btn btn-outline-primary px-5"><i class="lni lni-circle-plus"></i> أضف عنصر جديد </a>
                 </div>
             </div>
-            <div class="table-responsive mt-4" id="print">
+            <div class="table-responsive mt-4">
                 <table class="table align-middle">
                     <thead class="table-secondary">
                     <tr>
@@ -37,12 +31,11 @@
                             <td>{{$con->id}}</td>
 
                             <td>{{$con->name}}</td>
-                            <td><span class="badge bg-light-success text-success w-50">
-                                {{ $con->userInfo->group->name }}</span></td>
+                            <td><span class="badge  bg-light-warning text-warning w-50">
+                                    {{ $con->userInfo->group->name}}</span></td>
                             <td>{{$con->email}}</td>
                             <td><span class="badge @if($con->email_verified_at) bg-light-success text-success @else bg-light-danger text-danger @endif w-50">
                                     {{$con->email_verified_at ? ' مفعل ' : ' غير مفعل' }}</span></td>
-
                             <td><span class="badge @if($con->userInfo?->status == 'yes') bg-light-success text-success @else bg-light-danger text-danger @endif w-50">
                                     {{$con->userInfo?->status == 'yes' ? ' نشط ' : ' غير نشط' }}</span></td>
                             <td>
@@ -53,11 +46,36 @@
                                             العمليات
                                         </button>
                                         <div class="dropdown-menu">
-                                            <a href="{{route('teachers.show', $con->id)}}" class="dropdown-item">تكليفات </a>
+                                            <a class="dropdown-item" href="{{route('teacher.add.new', $con->id)}}" ><i class="lni lni-users"></i> قبول</a>
+                                            {{-- <a class="dropdown-item" href="#" data-bs-toggle="modal"
+                                                    data-bs-target="#sendmessage{{ $con->id }}">
+                                                    <i class="bi bi-reply"></i> الرد
+                                                </a> --}}
                                             <a class="dropdown-item" href="{{route('teachers.edit', $con->id)}}" ><i class="bi bi-pencil-fill"></i> تعديل</a>
                                             <a class="dropdown-item" href="#"  data-bs-toggle="modal" data-bs-target="#deleteItem{{$con->id}}" data-bs-toggle="tooltip"><i class="bi bi-trash-fill"></i> حذف</a>
                                         </div>
                                     </div>
+
+                                    {{-- <div class="modal fade" id="sendmessage{{ $con->id }}" tabindex="-1"
+                                        aria-labelledby="link{{ $con->id }}" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <form action="{{ route('student-email', $con->id) }}" method="POST">
+                                                    @csrf
+                                                    <div class="modal-header">
+                                                        <input class="form-control" name="message"
+                                                            placeholder="اكتب الرساله" required />
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button class="btn btn-outline-default btn-sm me-2"
+                                                            type="button" data-bs-dismiss="modal">الغاء</button>
+                                                        <button type="submit"
+                                                            class="btn btn-outline-danger btn-sm">ارسال</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div> --}}
 
                                     <div class="modal fade" id="deleteItem{{$con->id}}" tabindex="-1" aria-labelledby="link{{$con->id}}" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered">
@@ -77,7 +95,6 @@
                                             </div>
                                         </div>
                                     </div>
-
                                 </div>
                             </td>
                         </tr>
@@ -100,15 +117,3 @@
 
 @endsection
 
-@section('js')
-    <script type="text/javascript">
-        function printDiv() {
-            var printContents = document.getElementById('print').innerHTML;
-            var originalContents = document.body.innerHTML;
-            document.body.innerHTML = printContents;
-            window.print();
-            document.body.innerHTML = originalContents;
-            location.reload();
-        }
-    </script>
-@endsection

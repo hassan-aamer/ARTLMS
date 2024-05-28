@@ -212,13 +212,13 @@
                                         >المجموعه<span class="required text-danger">*</span></label
                                         >
                                         <select
-                                            name="group_type"
+                                            name="group_id"
                                             id="type"
                                             class="form-control form-select"
                                         >
-                                            <option value="">-- اختر المجموعة --</option>
-                                            <option value="d">مجموعة ضابطة (ض)</option>
-                                            <option value="t">مجموعة تجريبية (ت)</option>
+                                        @foreach ($groups as $group)
+                                        <option value="{{ $group->id }}">{{ $group->name }}</option>
+                                        @endforeach
                                         </select>
                                     </p>
                                 </div>

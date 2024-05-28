@@ -46,7 +46,7 @@ Trait HelperTrait
         $someData = [
             'user_id'=>$userID,
             'phone' =>$data['phone'],
-            'group_type' =>isset($data['group_type']) ? $data['group_type'] : 't',
+            'group_id' =>$data['group_id'],
             'job_title' =>$data['job_title'],
             'gender' =>isset($data['gender']) ? $data['gender'] : 'male',
             'national_id'=>$data['national_id'],
@@ -57,12 +57,12 @@ Trait HelperTrait
             'date_of_birth'=>null,
             'department'=>$data['department'],
             'reason'=>isset($data['reason']) ? $data['reason']:'',
-            'status'=>isset($data['status']) ? 'yes' : 'no',
-            'level_id'=>isset($data['level_id']) ? $data['level_id'] : null,
-            'section_id'=>isset($data['section_id']) ? $data['section_id'] : null,
-            'facebook'=>$data['facebook'],
-            'twitter'=>$data['twitter'],
-            'linkedin'=>$data['linkedin'],
+            'status'=>isset($data['status']) ? 'no' : 'yes',
+            // 'level_id'=>isset($data['level_id']) ? $data['level_id'] : null,
+            // 'section_id'=>isset($data['section_id']) ? $data['section_id'] : null,
+            // 'facebook'=>$data['facebook'],
+            // 'twitter'=>$data['twitter'],
+            // 'linkedin'=>$data['linkedin'],
         ];
         if($request->file('image'))
         {

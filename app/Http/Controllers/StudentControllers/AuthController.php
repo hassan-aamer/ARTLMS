@@ -44,7 +44,7 @@ class AuthController extends Controller
             $created = User::create([
                 'type' => 3,
                 'name' => $data['name'],
-                'group_id' => $data['group_id'],
+                // 'group_id' => $data['group_id'],
                 'email' => $data['email'],
                 'second_email' => $data['second_email'],
                 'password' => Hash::make($data['password']),
@@ -231,7 +231,7 @@ class AuthController extends Controller
         $someData = [
             'user_id'=>$userID,
             'phone' =>$data['phone'],
-            // 'group_type' =>$data['group_type'],
+            'group_id' =>$data['group_id'],
             'date_of_birth' =>null,
             'job_title' =>$data['job_title'],
             'gender' =>$data['gender'],

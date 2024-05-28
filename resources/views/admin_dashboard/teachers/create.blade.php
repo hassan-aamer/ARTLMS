@@ -38,10 +38,10 @@
 
                                         <div class="col-md-12">
                                             <label class="form-label">المجموعة<span class="text-danger">*</span> </label>
-                                            <select class="form-control" name="group_type" required>
-                                                <option value=""> اختر نوع المجموعة </option>
-                                                <option value="d"> مجموعة ضابطة </option>
-                                                <option value="t"> مجموعة تجريبية </option>
+                                            <select class="form-control" name="group_id" required>
+                                                @foreach ($groups as $group)
+                                                <option value="{{ $group->id }}"> {{ $group->name }} </option>
+                                                @endforeach
                                             </select>
                                         </div>
 
