@@ -48,7 +48,7 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="{{ route('artists') }}">
                     <div class="parent-icon"><i class="lni lni-users"></i>
                     </div>
                     <div class="menu-title"> الفنانون  </div>

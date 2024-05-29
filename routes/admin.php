@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\AdminControllers\AuthController;
+use App\Http\Controllers\AdminControllers\ArtistController;
 use App\Http\Controllers\AdminControllers\GroupsController;
 use App\Http\Controllers\AdminControllers\ContactController;
 use App\Http\Controllers\AdminControllers\DashboardController;
@@ -103,5 +104,12 @@ Route::middleware(['auth', 'teacher-admin-access'])->namespace('App\Http\Control
     Route::post('/settings', 'SettingController@update')->name('settings.update');
 
     Route::post('att/{id}', [ContactController::class, 'att'])->name('att');
+    //Artists
+    Route::get('artists', [ArtistController::class, 'index'])->name('artists');
+    Route::delete('/destroy/artists/{id}', [ArtistController::class, 'destroy'])->name('artists.destroy');
+    Route::get('teacher-artist/{id}', [ArtistController::class, 'teacherasartist'])->name('teacherasartist');
+    Route::get('student-artist/{id}', [ArtistController::class, 'studentasartist'])->name('studentasartist');
+
+    //End Artists
 
 });
