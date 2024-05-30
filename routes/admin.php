@@ -45,6 +45,7 @@ Route::middleware(['auth', 'teacher-admin-access'])->namespace('App\Http\Control
     Route::post('groups', [GroupsController::class, 'create'])->name('groups.create');
     Route::post('groups/{id}', [GroupsController::class, 'destroy'])->name('groups.destroy');
     Route::post('groups/{id}/edit', [GroupsController::class, 'update'])->name('groups.update');
+    Route::get('groups/show', [GroupsController::class, 'show'])->name('groups.show');
     //skills
     Route::resource('skills', 'SkillController');
     //courses

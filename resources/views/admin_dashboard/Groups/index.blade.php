@@ -9,25 +9,8 @@
             <div class="d-flex align-items-center">
                 <h5 class="mb-0"> <i class="lni lni-book"></i> المجموعات </h5>
                 <div class="ms-auto position-relative">
-                    <a href="#" data-bs-toggle="modal" data-bs-target="#create"
+                    <a href="{{ route('groups.show') }}"
                         class="btnIcon btn btn-outline-primary px-5"><i class="lni lni-circle-plus"></i> أضف عنصر جديد </a>
-                </div>
-                <div class="modal fade" id="create" tabindex="-1" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <form action="{{ route('groups.create') }}" method="POST">
-                                @csrf
-                                <div class="modal-header">
-                                    <input class="form-control" name="name" placeholder="اكتب اسم المجموعة" required />
-                                </div>
-                                <div class="modal-footer">
-                                    <button class="btn btn-outline-default btn-sm me-2" type="button"
-                                        data-bs-dismiss="modal">الغاء</button>
-                                    <button type="submit" class="btn btn-outline-danger btn-sm">ارسال</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
                 </div>
             </div>
             <div class="table-responsive mt-4">
