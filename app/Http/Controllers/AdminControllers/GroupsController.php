@@ -46,13 +46,16 @@ class GroupsController extends Controller
     {
         $group = Group::find($id);
         $group->update($request->all());
-        return redirect()->back()->with(['success' => 'تم تعديل اسم المجموعه بنجاح  ']);
+        return redirect()->route('groups.index')->with(['success' => 'تم تعديل اسم المجموعه بنجاح  ']);
     }
     public function show()
     {
-
-
         return view('admin_dashboard.groups.create',);
+    }
+    public function edit($id)
+    {
+        $group = Group::find($id);
+        return view('admin_dashboard.groups.edit',compact('group'));
     }
     public function destroy($id)
     {

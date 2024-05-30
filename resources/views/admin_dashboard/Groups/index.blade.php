@@ -36,8 +36,8 @@
                                             العمليات
                                         </button>
                                         <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="{{ route('units.edit', $con->id) }}"
-                                                data-bs-toggle="modal" data-bs-target="#update{{ $con->id }}"
+                                            <a class="dropdown-item" href="{{ route('groups.editt', $con->id) }}"
+
                                                 data-bs-toggle="tooltip">
                                                 <i class="bi bi-pencil-fill"></i> تعديل
                                             </a>
@@ -49,25 +49,7 @@
                                     </div>
 
 
-                                    <div class="modal fade" id="update{{ $con->id }}" tabindex="-1" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered">
-                                            <div class="modal-content">
-                                                <form action="{{ route('groups.update',$con->id) }}" method="POST">
-                                                    @csrf
-                                                    <div class="modal-header">
-                                                        <input class="form-control" name="name"
-                                                            placeholder="تعديل اسم المجموعة" required />
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button class="btn btn-outline-default btn-sm me-2" type="button"
-                                                            data-bs-dismiss="modal">الغاء</button>
-                                                        <button type="submit"
-                                                            class="btn btn-outline-danger btn-sm">ارسال</button>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
+                                  
 
 
 
