@@ -98,7 +98,7 @@ Route::middleware(['auth', 'teacher-admin-access'])->namespace('App\Http\Control
     Route::post('send/{id}', [ContactController::class, 'send'])->name('contact.send');
     Route::post('student-email/{id}', 'StudentController@send')->name('student-email');
     Route::get('update/{id}', [ContactController::class, 'showUpdate'])->name('contact.update');
-    Route::get('show/{id}', [ContactController::class, 'showAtt'])->name('show.att');
+    Route::get('contacts/show/{id}', [ContactController::class, 'showAtt'])->name('show.att');
     Route::put('update/{id}', [ContactController::class, 'update'])->name('contact.update');
     Route::resource('contacts', 'ContactController');
     Route::resource('guides', 'GuideController');

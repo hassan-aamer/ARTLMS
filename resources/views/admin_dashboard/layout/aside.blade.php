@@ -270,11 +270,19 @@
             </a>
         </li>
 
+        <li>
+            <a href="#">
+                <div class="parent-icon"><i class="lni lni-trello"></i>
+                </div>
+                <div class="menu-title">  التجارب / الاعمال الفنية </div>
+            </a>
+        </li>
+
         <li class="dropdown-item dropdown">
             <a href="" onclick="return false" class="dropdown-item collapse" aria-expanded="false">
                 <div class="parent-icon"><i class="lni lni-library"></i>
                 </div>
-                <div class="menu-title">     قسم المقالات <i class=" mx-4 bi bi-arrow-bar-down"></i> </div>
+                <div class="menu-title">  المدونة <i class=" mx-4 bi bi-arrow-bar-down"></i> </div>
 
             </a>
             <ul>
@@ -302,11 +310,44 @@
             </ul>
         </li>
 
+        <li class="dropdown-item dropdown">
+            <a href="" onclick="return false" class="dropdown-item collapse" aria-expanded="false">
+                <div class="parent-icon"><i class="lni lni-library"></i>
+                </div>
+                <div class="menu-title">  المكتبة <i class=" mx-4 bi bi-arrow-bar-down"></i> </div>
+
+            </a>
+            <ul>
+                <li>
+                    <a href="{{route('article_categories.index')}}">
+                        <div class="parent-icon"><i class="lni lni-library"></i>
+                        </div>
+                        <div class="menu-title"> الأقسام</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{route('article_tags.index')}}">
+                        <div class="parent-icon"><i class="lni lni-library"></i>
+                        </div>
+                        <div class="menu-title"> الوسائط  </div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+
             <li>
                 <a href="{{ route('guides.index')  }}">
                     <div class="parent-icon"><i class="lni lni-trello"></i>
                     </div>
                     <div class="menu-title"> دليل المستخدم </div>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <div class="parent-icon"><i class="lni lni-trello"></i>
+                    </div>
+                    <div class="menu-title"> تقييم المنصة </div>
                 </a>
             </li>
 

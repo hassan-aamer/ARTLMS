@@ -21,13 +21,13 @@
                                         action="{{ route('att', $contact->id) }}">
                                         @csrf
                                         <div class="col-12">
-                                            <label class="form-label">  العنوان <span class="text-danger">*</span> </label>
-                                            <input type="text" name="" class="form-control" required placeholder="ادخل عنوان العنصر">
+                                            <label class="form-label">  العنوان <small class="text-danger">(اختيارى)</small> </label>
+                                            <input type="text" name="" class="form-control"  placeholder="ادخل عنوان العنصر">
                                         </div>
 
                                         <div class="col-12">
-                                            <label class="form-label"> وصف مختصر <span class="text-danger">*</span></label>
-                                            <textarea required name="" class="form-control ckeditor" placeholder="وصف مختصر" rows="4" cols="4"></textarea>
+                                            <label class="form-label"> وصف مختصر <small class="text-danger">(اختيارى)</small></label>
+                                            <textarea  name="" class="form-control ckeditor" placeholder="وصف مختصر" rows="4" cols="4"></textarea>
                                         </div>
 
 
@@ -40,13 +40,13 @@
                                             </div>
                                             <table class="no-datatable table table-striped table-hover table-responsive table-bordered mb-0">
                                                 <thead>
-                                                    <th> رابط فيديو (Iframe tag) 1  </th>
+                                                    <th> رابط فيديو  <small class="text-danger">(اختيارى)</small></th>
                                                     <th> حذف</th>
                                                 </thead>
                                                 <tbody id="lines">
                                                     <tr id="tr">
                                                         <td>
-                                                            <input class="form-control" name="link[]" placeholder=" رابط الفيديو" required />
+                                                            <input class="form-control" name="link[]" placeholder=" رابط الفيديو"  />
                                                         </td>
                                                         <td>
                                                             <button type="button" class="btn btn-sm btn-danger removeRow">
@@ -67,13 +67,13 @@
                                             </div>
                                             <table class="no-datatable table table-striped table-hover table-responsive table-bordered mb-0">
                                                 <thead>
-                                                    <th> رابط فيديو تفاعلى</th>
+                                                    <th>(Iframe tag) 1  رابط فيديو <small class="text-danger">(اختيارى) SCORM, xAPI, cmi5 , AICC , html , html 5 , exe , epub ( ebook ) </small></th>
                                                     <th> حذف</th>
                                                 </thead>
                                                 <tbody id="lines">
                                                     <tr id="tr">
                                                         <td>
-                                                            <input class="form-control" name="url[]" placeholder=" رابط الفيديو" required />
+                                                            <input class="form-control" name="url[]" placeholder=" رابط الفيديو"  />
                                                         </td>
                                                         <td>
                                                             <button type="button" class="btn btn-sm btn-danger removeRow">
