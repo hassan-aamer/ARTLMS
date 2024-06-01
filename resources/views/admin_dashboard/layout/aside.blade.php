@@ -75,13 +75,13 @@
                     <div class="menu-title">  الوحدات  </div>
                 </a>
             </li>
-            <li>
+            {{-- <li>
                 <a href="{{ route('groups.index') }}">
                     <div class="parent-icon"><i class="bi bi-grid-fill"></i>
                     </div>
                     <div class="menu-title">  المجموعات  </div>
                 </a>
-            </li>
+            </li> --}}
             <li>
                 <a href="#">
                     <div class="parent-icon"><i class="bi bi-grid-fill"></i>
@@ -259,6 +259,13 @@
                 <div class="parent-icon"><i class="bi bi-file-code-fill"></i>
                 </div>
                 <div class="menu-title">  المعارض الفنية </div>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <div class="parent-icon"><i class="bi bi-file-code-fill"></i>
+                </div>
+                <div class="menu-title"> الورش </div>
             </a>
         </li>
 

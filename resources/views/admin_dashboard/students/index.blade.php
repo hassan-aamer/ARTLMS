@@ -9,6 +9,11 @@
             <div class="d-flex align-items-center">
                 <h5 class="mb-0"> <i class="lni lni-users"></i> قائمة المتعلمين المقبولين </h5>
                 <div class="ms-auto position-relative">
+                    <a href="{{ route('groups.index') }}" class="btnIcon btn btn-outline-primary">
+                        المجموعات
+                    </a>
+                </div>
+                <div class="ms-auto position-relative">
                     <a href="{{route('indexWith')}}" class="btnIcon btn btn-outline-primary">
                         <i class="lni lni-users"></i>
                         <i class="lni lni-checkmark"></i>
