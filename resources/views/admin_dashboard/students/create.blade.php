@@ -9,7 +9,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="d-flex align-items-center">
-                        <h5 class="mb-0"> <i class="bi bi-grid-fill"></i>    ( المتعلمين ) | أضف عنصر جديد </h5>
+                        <h5 class="mb-0"> <i class="bi bi-grid-fill"></i>    ( المتعلمون ) | أضف عنصر جديد </h5>
                     </div>
                     <div class="row g-3 mt-4">
                         <div class="col-12">
@@ -20,7 +20,7 @@
                                         @csrf
 
                                         <div class="col-md-6">
-                                            <label class="form-label"> الأسم <span class="text-danger">*</span> </label>
+                                            <label class="form-label"> الاسم  <span class="text-danger">*</span> </label>
                                             <input type="text" id="name" name="name" class="form-control" required />
                                         </div>
                                         <div class="col-md-6">

@@ -7,13 +7,20 @@
     <div class="card">
         <div class="card-body">
             <div class="d-flex align-items-center">
-                <h5 class="mb-0"> <i class="lni lni-users"></i> قائمة المتعلمين  </h5>
+                <h5 class="mb-0"> <i class="lni lni-users"></i> قائمة المتعلمين المقبولين </h5>
                 <div class="ms-auto position-relative">
-                    <a href="{{route('indexWith')}}" class="btnIcon btn btn-outline-primary " ><i class="lni lni-users"></i>  </a>
+                    <a href="{{route('indexWith')}}" class="btnIcon btn btn-outline-primary">
+                        <i class="lni lni-users"></i>
+                        <i class="lni lni-checkmark"></i>
+                    </a>
                 </div>
+
                 <div class="ms-auto position-relative">
-                    <a href="#" id="print_Button" onclick="printDiv()" class="btnIcon btn btn-outline-primary ">طباعة  </a>
+                    <a href="#" id="print_Button" onclick="printDiv()" class="btnIcon btn btn-outline-primary">
+                        <i class="lni lni-printer"></i> طباعة
+                    </a>
                 </div>
+
 
                 <div class="ms-auto position-relative">
                     <a href="{{route('students.create')}}" class="btnIcon btn btn-outline-primary px-5"><i class="lni lni-circle-plus"></i> أضف عنصر جديد </a>
