@@ -50,12 +50,12 @@ class GroupsController extends Controller
     }
     public function show()
     {
-        return view('admin_dashboard.groups.create',);
+        return view('admin_dashboard.Groups.create',);
     }
     public function edit($id)
     {
         $group = Group::find($id);
-        return view('admin_dashboard.groups.edit',compact('group'));
+        return view('admin_dashboard.Groups.edit',compact('group'));
     }
     public function destroy($id)
     {
