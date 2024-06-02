@@ -23,7 +23,7 @@
 
             <li>
                 <a href="{{ route('contacts.index')  }}">
-                    <div class="parent-icon"><i class="bi bi-file-code-fill"></i>
+                    <div class="parent-icon"><i class="bi bi-envelope-at-fill"></i>
                     </div>
                     <div class="menu-title">  الرسائل </div>
                     @if(messages() > 0)
@@ -49,7 +49,7 @@
             </li>
             <li>
                 <a href="{{ route('artists') }}">
-                    <div class="parent-icon"><i class="lni lni-users"></i>
+                    <div class="parent-icon"><i class="bi bi-person-video3"></i>
                     </div>
                     <div class="menu-title"> الفنانون  </div>
                 </a>
@@ -70,21 +70,14 @@
             </li>
             <li>
                 <a href="{{ route('units.index') }}">
-                    <div class="parent-icon"><i class="bi bi-grid-fill"></i>
+                    <div class="parent-icon"><i class="bi bi-collection-fill"></i>
                     </div>
                     <div class="menu-title">  الوحدات  </div>
                 </a>
             </li>
-            {{-- <li>
-                <a href="{{ route('groups.index') }}">
-                    <div class="parent-icon"><i class="bi bi-grid-fill"></i>
-                    </div>
-                    <div class="menu-title">  المجموعات  </div>
-                </a>
-            </li> --}}
             <li>
                 <a href="#">
-                    <div class="parent-icon"><i class="bi bi-grid-fill"></i>
+                    <div class="parent-icon"><i class="bi bi-award-fill"></i>
                     </div>
                     <div class="menu-title">  التقيمات  </div>
                 </a>
@@ -133,7 +126,7 @@
 
         <li>
             <a href="{{ route('extensions.index')  }}">
-                <div class="parent-icon"><i class="lni lni-files"></i>
+                <div class="parent-icon"><i class="bi bi-file-earmark-text-fill"></i>
                 </div>
                 <div class="menu-title"> أنواع الملفات </div>
             </a>
@@ -149,7 +142,7 @@
 
         <li>
             <a href="{{ route('sections.index')  }}">
-                <div class="parent-icon"><i class="lni lni-layout"></i>
+                <div class="parent-icon"><i class="bi bi-card-list"></i>
                 </div>
                 <div class="menu-title"> الشعب الدراسية   </div>
             </a>
@@ -188,7 +181,7 @@
 
         <li>
             <a href="{{ route('scheduleds.index')  }}">
-                <div class="parent-icon"><i class="lni lni-trello"></i>
+                <div class="parent-icon"><i class="bi bi-folder-fill"></i>
                 </div>
                 <div class="menu-title"> المقررات الدراسية </div>
             </a>
@@ -214,7 +207,7 @@
 
         <li>
             <a href="{{ route('courses.index')  }}">
-                <div class="parent-icon"><i class="bi bi-file-code-fill"></i>
+                <div class="parent-icon"><i class="bi bi-journal-bookmark-fill"></i>
                 </div>
                 <div class="menu-title"> الأنشطة </div>
             </a>
@@ -248,7 +241,7 @@
 
         <li>
             <a href="{{ route('tools.index')  }}">
-                <div class="parent-icon"><i class="bi bi-file-code-fill"></i>
+                <div class="parent-icon"><i class="bi bi-brush-fill"></i>
                 </div>
                 <div class="menu-title"> الأدوات الدراسية </div>
             </a>
@@ -256,14 +249,14 @@
 
         <li>
             <a href="{{ route('galleries.index')  }}">
-                <div class="parent-icon"><i class="bi bi-file-code-fill"></i>
+                <div class="parent-icon"><i class="bi bi-shop-window"></i>
                 </div>
                 <div class="menu-title">  المعارض الفنية </div>
             </a>
         </li>
         <li>
             <a href="#">
-                <div class="parent-icon"><i class="bi bi-file-code-fill"></i>
+                <div class="parent-icon"><i class="bi bi-tools"></i>
                 </div>
                 <div class="menu-title"> الورش </div>
             </a>
@@ -271,7 +264,7 @@
 
         <li>
             <a href="{{ route('zooms.index')  }}">
-                <div class="parent-icon"><i class="bi bi-file-code-fill"></i>
+                <div class="parent-icon"><i class="bi bi-hospital"></i>
                 </div>
                 <div class="menu-title">   الفصول الافتراضية </div>
             </a>
@@ -352,7 +345,7 @@
             </li>
             <li>
                 <a href="">
-                    <div class="parent-icon"><i class="lni lni-trello"></i>
+                    <div class="parent-icon"><i class="bi bi-award-fill"></i>
                     </div>
                     <div class="menu-title"> تقييم المنصة </div>
                 </a>
@@ -360,7 +353,7 @@
 
             <li>
                 <a href="{{ route('settings.index')  }}">
-                    <div class="parent-icon"><i class="lni lni-trello"></i>
+                    <div class="parent-icon"><i class="bi bi-gear-fill"></i>
                     </div>
                     <div class="menu-title">إعدادات الموقع  </div>
                 </a>
