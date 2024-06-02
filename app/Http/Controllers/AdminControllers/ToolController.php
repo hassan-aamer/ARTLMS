@@ -64,6 +64,12 @@ class ToolController extends Controller
         return view('admin_dashboard.tools.edit', compact('content'));
     }
 
+    public function showAttach($id)
+    {
+        $content = Tool::find($id);
+        return view('admin_dashboard.tools.attach', compact('content'));
+    }
+
     /**
      * Update the specified resource in storage.
      */

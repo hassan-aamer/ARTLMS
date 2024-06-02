@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\AdminControllers\AuthController;
+use App\Http\Controllers\AdminControllers\ToolController;
 use App\Http\Controllers\AdminControllers\ArtistController;
 use App\Http\Controllers\AdminControllers\GroupsController;
 use App\Http\Controllers\AdminControllers\ContactController;
@@ -79,6 +80,7 @@ Route::middleware(['auth', 'teacher-admin-access'])->namespace('App\Http\Control
     //Sprint 4
     //tools
     Route::resource('tools', 'ToolController');
+    Route::get('tool/attach/{id}', [ToolController::class, 'showAttach'])->name('show.attach');
     //galleries
     Route::resource('galleries', 'GalleryController');
     //zoom
