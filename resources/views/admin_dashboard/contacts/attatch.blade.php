@@ -85,16 +85,12 @@
                                             </table>
                                         </div>
 
-                                        {{-- <div class="col-12">
-                                            <label for="form-label">إضافة ملفات</label>
-                                            <input class="form-control" id="triggerInputt" type="file" name="file"
-                                                placeholder="إضافة ملفات" accept="application/pdf">
-                                        </div> --}}
+
 
 
                                         <div class="col-12">
                                             <label for="form-label"> وصف الميتا الخاص بال SEO</label>
-                                            <textarea required name="title" class="form-control " placeholder=" وصف الميتا" rows="4" cols="4"></textarea>
+                                            <textarea  name="title" class="form-control " placeholder=" وصف الميتا" rows="4" cols="4"></textarea>
                                         </div>
 
                                         <div class="col-12">
@@ -128,10 +124,10 @@
                                                 <tbody id="lines">
                                                     <tr id="tr">
                                                         <td>
-                                                            <input class="form-control" name="" placeholder="ادخل اسم الملف" required />
+                                                            <input class="form-control" name="" placeholder="ادخل اسم الملف"  />
                                                         </td>
                                                         <td>
-                                                            <select class="form-control" name="" required>
+                                                            <select class="form-control" name="" >
                                                                 <option value=""> اختر نوع الملف </option>
                                                                 @foreach(extensions() as $ext)
                                                                     <option value="{{$ext->file_type .' - '.$ext->file_ext}}"> {{$ext->file_type .' - '.$ext->file_ext}} </option>
@@ -139,7 +135,7 @@
                                                             </select>
                                                         </td>
                                                         <td>
-                                                            <input type="file" class="form-control" name="file"  required />
+                                                            <input type="file" class="form-control" name="file"   />
                                                         </td>
                                                         <td>
                                                             <input class="form-control" name="" placeholder="ادخل  توصيف الملف (Meta)"  />

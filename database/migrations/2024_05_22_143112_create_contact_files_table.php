@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('contact_files', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('contact_id')->constrained('contacts')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->string('image');
-            $table->string('url');
-            $table->string('link');
-            $table->string('file');
-            $table->text('description');
-            $table->string('title');
+            $table->foreignId('contact_id')->nullable()->constrained('contacts')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->string('image')->nullable();
+            $table->string('url')->nullable();
+            $table->string('link')->nullable();
+            $table->string('file')->nullable();
+            $table->text('description')->nullable();
+            $table->string('title')->nullable();
             $table->timestamps();
         });
     }
