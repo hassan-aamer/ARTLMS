@@ -17,8 +17,10 @@ class sendMail extends Mailable
      * Create a new message instance.
      */
     public $message;
-    public function __construct($message)
+    public $title;
+    public function __construct($message,$title)
     {
+        $this->title = $title;
         $this->message = $message;
     }
 

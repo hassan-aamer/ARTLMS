@@ -50,9 +50,8 @@
                                                 <a class="dropdown-item" href="{{ route('contact.update', $con->id) }}">
                                                     <i class="bi bi-pencil-square"></i> تعديل الرسالة
                                                 </a>
-                                                <a class="dropdown-item" href="{{ route('show.att', $con->id) }}"
-                                                    >
-                                                    <i class="bi bi-paperclip"></i>  إضافة مرفقات
+                                                <a class="dropdown-item" href="{{ route('show.att', $con->id) }}">
+                                                    <i class="bi bi-paperclip"></i> إضافة مرفقات
                                                 </a>
                                                 <a class="dropdown-item" href="{{ route('send-email', $con->id) }}">
                                                     <i class="bi bi-arrow-repeat"></i> إعادة توجيه
@@ -105,8 +104,11 @@
                                                     <form action="{{ route('contact.send', $con->id) }}" method="POST">
                                                         @csrf
                                                         <div class="modal-header">
-                                                            <input class="form-control" name="message"
-                                                                placeholder="اكتب الرساله" required />
+                                                            <input class="form-control" name="title"
+                                                                placeholder=" الموضوع" required />
+                                                        </div>
+                                                        <div class="modal-header">
+                                                            <textarea class="form-control" name="message" placeholder="تفاصيل الرساله" required></textarea>
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button class="btn btn-outline-default btn-sm me-2"

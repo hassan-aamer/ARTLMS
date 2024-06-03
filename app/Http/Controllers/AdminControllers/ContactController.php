@@ -120,9 +120,10 @@ class ContactController extends Controller
             $contact = Contact::find($id);
 
             $email = $contact->email;
+            $title = $request->title;
             $message = $request->message;
 
-            Mail::to($email)->send(new sendMail($message));
+            Mail::to($email)->send(new sendMail($message,$title));
 
             return redirect()->back()->with(['success' => 'تم ارسال الرسالة بنجاح']);
 

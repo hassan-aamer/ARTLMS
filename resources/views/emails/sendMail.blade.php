@@ -1,6 +1,9 @@
 <x-mail::message>
 
-{{ $message }}
+Subject : {{ $title }}
+<br><br>
+Message : {{ $message }}
+
 
 <br><br><br>
 
