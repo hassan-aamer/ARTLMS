@@ -54,10 +54,18 @@ class HomePageController extends Controller
         if (isset($data['spam'])) {
             return redirect()->back();
         }
+
+        if ($request->hasFile('file')) {
+            $filePath = $request->file('file')->store('files', 'images');
+            $data['file'] = $filePath;
+        }
+
         Contact::create($data);
+
         toastr()->success('تم إرسال الرسالة بنجاح سوف يتم الرد عليكم في أقرب وقت', 'نجح', ['timeOut' => 8000]);
         return redirect()->back();
     }
+
 
 
 

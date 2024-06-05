@@ -28,6 +28,7 @@ class ContactRequest extends FormRequest
             'subject' => 'required',
             'message' => 'required',
             'spam' => 'nullable',
+            'file' => 'required',
         ];
 
     }

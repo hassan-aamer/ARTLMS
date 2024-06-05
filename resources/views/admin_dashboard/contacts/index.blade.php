@@ -50,9 +50,9 @@
                                                 <a class="dropdown-item" href="{{ route('contact.update', $con->id) }}">
                                                     <i class="bi bi-pencil-square"></i> تعديل الرسالة
                                                 </a>
-                                                <a class="dropdown-item" href="{{ route('show.att', $con->id) }}">
+                                                {{-- <a class="dropdown-item" href="{{ route('show.att', $con->id) }}">
                                                     <i class="bi bi-paperclip"></i> إضافة مرفقات
-                                                </a>
+                                                </a> --}}
                                                 <a class="dropdown-item" href="{{ route('send-email', $con->id) }}">
                                                     <i class="bi bi-arrow-repeat"></i> إعادة توجيه
                                                 </a>

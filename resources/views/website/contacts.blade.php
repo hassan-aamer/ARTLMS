@@ -141,9 +141,16 @@
 
                         <div class="col-lg-12">
                             <div class="text-center">
-                                <button class="btn btn-main w-100 rounded" type="submit">
+                                <button class="btn btn-main w-30 rounded" type="submit" style="float: right;">
                                     إرسال الرسالة
                                 </button>
+                                <!-- عنصر الصورة المرفقة -->
+                                <label for="fileInput" style="cursor: pointer; font-size: 25px; margin-right: 10px; float: right; padding: 10px">
+                                    <i class="bi bi-paperclip"></i>
+                                </label>
+
+                                <!-- العنصر المخفي لتحميل الملف -->
+                                <input type="file" id="fileInput" name="file" style="display: none;" onchange="previewFile()">
                             </div>
                         </div>
                     </form>
@@ -208,6 +215,26 @@
             }
         });
     });
+</script>
+
+
+
+<script>
+    function previewFile() {
+        var preview = document.getElementById('previewImage');
+        var file = document.querySelector('input[type=file]').files[0];
+        var reader = new FileReader();
+
+        reader.onloadend = function () {
+            preview.src = reader.result;
+        }
+
+        if (file) {
+            reader.readAsDataURL(file);
+        } else {
+            preview.src = '';
+        }
+    }
 </script>
 @endpush
 

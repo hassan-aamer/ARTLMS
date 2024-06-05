@@ -14,6 +14,7 @@
     <!-- bootstrap.min css -->
     <link rel="stylesheet" href="{{ asset('frontend/assets/vendors/bootstrap/bootstrap.rtl.css')  }}" />
     <!-- Iconfont Css -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
     <link rel="icon shortcut" href="{{ asset('frontend/assets/images/logo-v3.png')  }}" />
     <link
         rel="stylesheet"
