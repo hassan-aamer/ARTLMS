@@ -13,4 +13,8 @@ class ToolSection extends Model
 
 
     protected $fillable= ['section_name'];
+    public function tools()
+    {
+        return $this->hasMany(Tool::class, 'tool_section_id');
+    }
 }

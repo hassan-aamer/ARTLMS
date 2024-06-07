@@ -35,7 +35,8 @@ class ToolController extends Controller
      */
     public function create()
     {
-        return view('admin_dashboard.tools.create');
+        $sections = ToolSection::all();
+    return view('admin_dashboard.tools.create', compact('sections'));
     }
 
 
@@ -101,14 +102,20 @@ class ToolController extends Controller
     {
         $data = $request->validated();
         //upload Image
-        $image = $this->upload_file_helper_trait($request,'image', 'uploads/');
+        $image = $this->upload_file_helper_trait($request, 'image', 'uploads/');
         $data['image'] = $image;
-        isset($data['status']) ? $data['status']='yes' : $data['status'] = 'no';
+        isset($data['status']) ? $data['status'] = 'yes' : $data['status'] = 'no';
         $data['teacher_id'] = $this->userId();
+
+        // إذا تم اختيار القسم، قم بحفظه مع البيانات
+        if ($request->filled('tool_section_id')) {
+            $data['tool_section_id'] = $request->input('tool_section_id');
+        }
+
         Tool::create($data);
-        toastr()->success($this->insertMsg, 'نجح', ['timeOut' => 5000]);
-        return redirect()->back();
+        return redirect()->route('tools.index')->with('success', 'تم انشاء  الأداه الدراسية بنجاح.');
     }
+
 
 
     /**
@@ -118,8 +125,13 @@ class ToolController extends Controller
     {
         $content =  $tool;
         $this->editPermission($content);
-        return view('admin_dashboard.tools.edit', compact('content'));
+
+        // استعلام للحصول على الأقسام من قاعدة البيانات
+        $sections = ToolSection::all();
+
+        return view('admin_dashboard.tools.edit', compact('content', 'sections'));
     }
+
 
     public function showAttach($id)
     {
@@ -138,10 +150,16 @@ class ToolController extends Controller
             $data['image'] = $image;
         }
         isset($data['status']) ? $data['status']='yes' : $data['status'] = 'no';
+
+        // تحديث القسم المختار
+        if ($request->filled('tool_section_id')) {
+            $data['tool_section_id'] = $request->input('tool_section_id');
+        }
+
         $tool->update($data);
-        toastr()->success($this->updateMsg, 'نجح', ['timeOut' => 5000]);
-        return redirect()->back();
+        return redirect()->route('tools.index')->with('success', 'تم تحديث الأداه الدراسية بنجاح.');
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -149,7 +167,6 @@ class ToolController extends Controller
     public function destroy(Tool $tool)
     {
         $tool->delete();
-        toastr()->success($this->deleteMsg, 'نجح', ['timeOut' => 5000]);
-        return redirect()->back();
+        return redirect()->route('tools.index')->with('success', 'تم حذف  الأداه الدراسية بنجاح.');
     }
 }

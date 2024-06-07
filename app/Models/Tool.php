@@ -9,4 +9,8 @@ class Tool extends Model
 {
     use HasFactory;
     protected $guarded = [''];
+    public function toolSection()
+    {
+        return $this->belongsTo(ToolSection::class, 'tool_section_id');
+    }
 }

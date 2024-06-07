@@ -31,6 +31,16 @@
                                             <input type="text" name="type" class="form-control"
                                                    placeholder=" مثال : برنامج تحكم عن بعد  ">
                                         </div>
+                                        <div class="col-12">
+                                            <label class="form-label">اختر القسم</label>
+                                            <select name="tool_section_id" class="form-select">
+                                                <option value="">اختر القسم</option>
+                                                @foreach($sections as $section)
+                                                    <option value="{{ $section->id }}">{{ $section->section_name }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+
 
                                         @include('admin_dashboard.inputs.status_sort')
                                         @include('admin_dashboard.inputs.add_btn')

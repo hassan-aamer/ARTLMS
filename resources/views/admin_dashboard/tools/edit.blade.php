@@ -32,6 +32,18 @@
                                                    placeholder=" مثال : برنامج تحكم عن بعد  ">
                                         </div>
                                         @include('admin_dashboard.inputs.edit_status_sort')
+
+                                        {{-- إضافة حقل القسم المعدل --}}
+                                        <div class="col-12">
+                                            <label class="form-label">اختر القسم</label>
+                                            <select name="tool_section_id" class="form-select">
+                                                <option value="">اختر القسم</option>
+                                                @foreach($sections as $section)
+                                                    <option value="{{ $section->id }}" @if($section->id == $content->tool_section_id) selected @endif>{{ $section->section_name }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+
                                         @include('admin_dashboard.inputs.edit_btn')
                                     </form>
                                 </div>
@@ -58,8 +70,6 @@
                     downloaded_link: {
                         required: true,
                     }
-
-
                 },
                 messages: {
                     title: {
@@ -68,7 +78,6 @@
                     downloaded_link: {
                         required: "الحقل مطلوب",
                     }
-
                 }
             });
         });
