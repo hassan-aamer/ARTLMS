@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\AdminControllers;
 
-use App\Http\Controllers\Controller;
-use App\Http\Traits\HelperTrait;
-use Illuminate\Http\Request;
-use App\Http\Requests\ToolRequest;
 use App\Models\Tool;
+use App\Models\ToolSection;
+use Illuminate\Http\Request;
+use App\Http\Traits\HelperTrait;
+use App\Http\Requests\ToolRequest;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
 
 class ToolController extends Controller
@@ -35,6 +36,62 @@ class ToolController extends Controller
     public function create()
     {
         return view('admin_dashboard.tools.create');
+    }
+
+
+    public function section()
+    {
+            $sections = ToolSection::all();
+            return view('admin_dashboard.toolsection.index', compact('sections'));
+
+    }
+    public function createsection(){
+        return view('admin_dashboard.toolsection.create');
+
+    }
+    public function deletesection(request $request ,$id){
+        $section = ToolSection::findOrFail($id);
+        $section->delete();
+
+        // إعادة التوجيه مع رسالة نجاح
+        return redirect()->route('toolssection')->with('success', 'تم حذف قسم الأدوات الدراسية بنجاح.');
+    }
+
+    public function storesection(request $request){
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+        ]);
+
+        // إنشاء قسم الأدوات الدراسية وحفظه في قاعدة البيانات
+        ToolSection::create([
+            'section_name' => $validatedData['name'],
+        ]);
+
+        // إعادة التوجيه مع رسالة نجاح
+        return redirect()->route('toolssection')->with('success', 'تم إضافة قسم الأدوات الدراسية بنجاح.');
+    }
+    public function editsection($id)
+    {
+        $section = ToolSection::findOrFail($id);
+        return view('admin_dashboard.toolsection.edit', compact('section'));
+    }
+
+    // طريقة لتحديث بيانات قسم الأدوات الدراسية في قاعدة البيانات
+    public function updatesection(Request $request, $id)
+    {
+        // تحقق من صحة البيانات المدخلة
+        $validatedData = $request->validate([
+            'section_name' => 'required|string|max:255',
+        ]);
+
+        // تحديث قسم الأدوات الدراسية في قاعدة البيانات
+        $section = ToolSection::findOrFail($id);
+        $section->update([
+            'section_name' => $validatedData['section_name'],
+        ]);
+
+        // إعادة التوجيه مع رسالة نجاح
+        return redirect()->route('toolssection')->with('success', 'تم تحديث قسم الأدوات الدراسية بنجاح.');
     }
 
     /**

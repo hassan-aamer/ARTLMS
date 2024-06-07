@@ -246,6 +246,13 @@
                 <div class="menu-title"> الأدوات الدراسية </div>
             </a>
         </li>
+        <li>
+            <a href="{{ route('toolssection')  }}">
+                <div class="parent-icon"><i class="bi bi-brush-fill"></i>
+                </div>
+                <div class="menu-title">  اقسام الأدوات الدراسية </div>
+            </a>
+        </li>
 
         <li>
             <a href="{{ route('galleries.index')  }}">

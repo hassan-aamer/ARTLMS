@@ -115,5 +115,13 @@ Route::middleware(['auth', 'teacher-admin-access'])->namespace('App\Http\Control
     Route::get('student-artist/{id}', [ArtistController::class, 'studentasartist'])->name('studentasartist');
 
     //End Artists
+    //section of tools
+    Route::get('/tools-sections/{id}/edit', [ToolController::class, 'editsection'])->name('toolssections.edit');
+    Route::put('/tools-sections/{id}', [ToolController::class, 'updatesection'])->name('toolssections.update');
+    Route::get('toolssection', [ToolController::class, 'section'])->name('toolssection');
+    Route::delete('deletetoolssection/{id}', [ToolController::class, 'deletesection'])->name('deletetoolssection');
+    Route::get('createtoolssection', [ToolController::class, 'createsection'])->name('createtoolssection');
+    Route::post('storetoolssection', [ToolController::class, 'storesection'])->name('storetoolssection');
+    //end
 
 });
