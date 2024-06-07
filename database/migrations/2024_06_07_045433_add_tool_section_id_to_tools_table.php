@@ -12,8 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('tools', function (Blueprint $table) {
-            $table->unsignedBigInteger('tool_section_id'); // إضافة العمود
-            $table->foreign('tool_section_id')->references('id')->on('tool_sections'); // تعريف المفتاح الأجنبي
+            $table->foreignId('tool_section_id')->constrained('tools');
         });
     }
 
