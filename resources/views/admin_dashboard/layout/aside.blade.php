@@ -112,7 +112,7 @@
                 </a>
             </li>
             <li>
-                <a href="{{ route('units.index') }}">
+                <a href="{{ route('subjects') }}">
                     <div class="parent-icon"><i class="bi bi-collection-fill"></i>
                     </div>
                     <div class="menu-title">المواد </div>
@@ -165,6 +165,21 @@
                 <div class="menu-title"> التقويمات </div>
             </a>
         </li>
+        <li>
+            <a href="{{ route('calendar_questions.index')  }}">
+                <div class="parent-icon"><i class="bi bi-question-lg"></i>
+                </div>
+                <div class="menu-title"> أسئلة التقويمات </div>
+            </a>
+        </li>
+
+        <li>
+            <a href="{{ route('calendar_answers.index')  }}">
+                <div class="parent-icon"><i class="bi bi-question-lg"></i>
+                </div>
+                <div class="menu-title"> إجابات التقويمات </div>
+            </a>
+        </li>
 
             <li>
                 <a href="#">
@@ -179,6 +194,13 @@
                 <div class="parent-icon"><i class="bi bi-brush-fill"></i>
                 </div>
                 <div class="menu-title"> الأدوات الدراسية </div>
+            </a>
+        </li>
+        <li>
+            <a href="{{ route('toolssection')  }}">
+                <div class="parent-icon"><i class="bi bi-brush-fill"></i>
+                </div>
+                <div class="menu-title">  اقسام الأدوات الدراسية </div>
             </a>
         </li>
 
@@ -348,7 +370,7 @@
 
 
 
-{{-- 
+{{--
         <li>
             <a href="{{ route('units.index')  }}">
                 <div class="parent-icon"><i class="lni lni-text-align-right"></i>
@@ -361,31 +383,11 @@
 
 
 
-        <li>
-            <a href="{{ route('calendar_questions.index')  }}">
-                <div class="parent-icon"><i class="bi bi-question-lg"></i>
-                </div>
-                <div class="menu-title"> أسئلة التقويمات </div>
-            </a>
-        </li>
-
-        <li>
-            <a href="{{ route('calendar_answers.index')  }}">
-                <div class="parent-icon"><i class="bi bi-question-lg"></i>
-                </div>
-                <div class="menu-title"> إجابات التقويمات </div>
-            </a>
-        </li>
 
 
 
-        <li>
-            <a href="{{ route('toolssection')  }}">
-                <div class="parent-icon"><i class="bi bi-brush-fill"></i>
-                </div>
-                <div class="menu-title">  اقسام الأدوات الدراسية </div>
-            </a>
-        </li>
+
+
 
 
 

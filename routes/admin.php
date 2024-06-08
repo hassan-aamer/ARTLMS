@@ -7,6 +7,7 @@ use App\Http\Controllers\AdminControllers\ToolController;
 use App\Http\Controllers\AdminControllers\ArtistController;
 use App\Http\Controllers\AdminControllers\GroupsController;
 use App\Http\Controllers\AdminControllers\ContactController;
+use App\Http\Controllers\AdminControllers\SubjectController;
 use App\Http\Controllers\AdminControllers\DashboardController;
 
 
@@ -61,6 +62,7 @@ Route::middleware(['auth', 'teacher-admin-access'])->namespace('App\Http\Control
 
     //units
     Route::resource('units', 'UnitController');
+    //subjects
 
     //lessons
     Route::resource('lessons', 'LessonController');
@@ -123,5 +125,13 @@ Route::middleware(['auth', 'teacher-admin-access'])->namespace('App\Http\Control
     Route::get('createtoolssection', [ToolController::class, 'createsection'])->name('createtoolssection');
     Route::post('storetoolssection', [ToolController::class, 'storesection'])->name('storetoolssection');
     //end
+      //section of subjects
+    //   Route::get('/tools-sections/{id}/edit', [ToolController::class, 'editsection'])->name('toolssections.edit');
+    //   Route::put('/tools-sections/{id}', [ToolController::class, 'updatesection'])->name('toolssections.update');
+      Route::get('subjects', [SubjectController::class, 'index'])->name('subjects');
+    //   Route::delete('deletetoolssection/{id}', [ToolController::class, 'deletesection'])->name('deletetoolssection');
+    //   Route::get('createtoolssection', [ToolController::class, 'createsection'])->name('createtoolssection');
+    //   Route::post('storetoolssection', [ToolController::class, 'storesection'])->name('storetoolssection');
+      //end
 
 });
