@@ -47,7 +47,13 @@
                     @endif --}}
                 </a>
             </li>
-
+            <li>
+                <a href="{{ route('artists') }}">
+                    <div class="parent-icon"><i class="bi bi-person-video3"></i>
+                    </div>
+                    <div class="menu-title"> الفنانون  </div>
+                </a>
+            </li>
             <li>
                 <a href="{{ route('teachers.index')  }}">
                     <div class="parent-icon"><i class="lni lni-consulting"></i>
@@ -59,21 +65,57 @@
                 <a href="{{route('meets.index')}}">
                     <div class="parent-icon"><i class="lni lni-google"></i>
                     </div>
-                    <div class="menu-title">  اجتماعات المتعلمين </div>
-                </a>
-            </li>
-            <li>
-                <a href="{{route('meets.index')}}">
-                    <div class="parent-icon"><i class="lni lni-google"></i>
-                    </div>
                     <div class="menu-title"> اجتماعات المحاضرين و المعلمين </div>
                 </a>
             </li>
             <li>
+                <a href="{{ route('units.index') }}">
+                    <div class="parent-icon"><i class="bi bi-collection-fill"></i>
+                    </div>
+                    <div class="menu-title">  الوحدات  </div>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <div class="parent-icon"><i class="bi bi-award-fill"></i>
+                    </div>
+                    <div class="menu-title">  التقيمات  </div>
+                </a>
+            </li>
+        @else
+            <li>
+                <a href="{{ route('website.teacher.dashboard')  }}">
+                    <div class="parent-icon"><i class="bi bi-house-fill"></i>
+                    </div>
+                    <div class="menu-title">لوحة التحكم</div>
+                </a>
+            </li>
+            <li>
+                <a href="{{route('students_files.index')}}">
+                    <div class="parent-icon"><i class="bi bi-file-code-fill"></i>
+                    </div>
+                    <div class="menu-title"> ملفات الإجابات للمتعلمين</div>
+                    @if(getStudentFilesAnswers() > 0)
+                        <span class="countNumber">{{getStudentFilesAnswers()}}</span>
+                    @endif
+                </a>
+            </li>
+
+            <li>
+                <a href="{{route('courses_questions.index')}}">
+                    <div class="parent-icon"><i class="lni lni-library"></i>
+                    </div>
+                    <div class="menu-title"> أسألة المتعلمين </div>
+                    @if(getQuestionsNotAnswered() > 0)
+                        <span class="countNumber">{{getQuestionsNotAnswered()}}</span>
+                    @endif
+                </a>
+            </li>
+            <li>
                 <a href="{{route('meets.index')}}">
                     <div class="parent-icon"><i class="lni lni-google"></i>
                     </div>
-                    <div class="menu-title">انواع الملفات</div>
+                    <div class="menu-title"> الاجتماعات </div>
                 </a>
             </li>
             <li>
@@ -112,7 +154,7 @@
                 </a>
             </li>
             <li>
-                <a href="{{ route('subjects') }}">
+                <a href="{{ route('units.index') }}">
                     <div class="parent-icon"><i class="bi bi-collection-fill"></i>
                     </div>
                     <div class="menu-title">المواد </div>
@@ -134,20 +176,21 @@
             </li>
 
 
-            <li>
-                <a href="{{ route('units.index') }}">
-                    <div class="parent-icon"><i class="bi bi-collection-fill"></i>
-                    </div>
-                    <div class="menu-title">  الوحدات  </div>
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('lessons.index')  }}">
-                    <div class="parent-icon"><i class="lni lni-library"></i>
-                    </div>
-                    <div class="menu-title"> الدروس/المحاضرات </div>
-                </a>
-            </li>
+        <li>
+            <a href="{{ route('units.index')  }}">
+                <div class="parent-icon"><i class="lni lni-text-align-right"></i>
+                </div>
+                <div class="menu-title"> الوحدات الدراسية </div>
+            </a>
+        </li>
+
+        <li>
+            <a href="{{ route('lessons.index')  }}">
+                <div class="parent-icon"><i class="lni lni-library"></i>
+                </div>
+                <div class="menu-title"> الدروس/المحاضرات </div>
+            </a>
+        </li>
 
 
 
@@ -158,26 +201,13 @@
                 <div class="menu-title"> الأنشطة </div>
             </a>
         </li>
+
+
         <li>
             <a href="{{ route('calendars.index')  }}">
                 <div class="parent-icon"><i class="bi bi-grid-fill"></i>
                 </div>
                 <div class="menu-title"> التقويمات </div>
-            </a>
-        </li>
-        <li>
-            <a href="{{ route('calendar_questions.index')  }}">
-                <div class="parent-icon"><i class="bi bi-question-lg"></i>
-                </div>
-                <div class="menu-title"> أسئلة التقويمات </div>
-            </a>
-        </li>
-
-        <li>
-            <a href="{{ route('calendar_answers.index')  }}">
-                <div class="parent-icon"><i class="bi bi-question-lg"></i>
-                </div>
-                <div class="menu-title"> إجابات التقويمات </div>
             </a>
         </li>
 
@@ -196,13 +226,6 @@
                 <div class="menu-title"> الأدوات الدراسية </div>
             </a>
         </li>
-        <li>
-            <a href="{{ route('toolssection')  }}">
-                <div class="parent-icon"><i class="bi bi-brush-fill"></i>
-                </div>
-                <div class="menu-title">  اقسام الأدوات الدراسية </div>
-            </a>
-        </li>
 
         <li>
             <a href="{{ route('zooms.index')  }}">
@@ -211,13 +234,7 @@
                 <div class="menu-title">   الفصول الافتراضية </div>
             </a>
         </li>
-        <li>
-            <a href="{{ route('artists') }}">
-                <div class="parent-icon"><i class="bi bi-person-video3"></i>
-                </div>
-                <div class="menu-title"> الفنانون  </div>
-            </a>
-        </li>
+
         <li>
             <a href="#">
                 <div class="parent-icon"><i class="lni lni-trello"></i>
@@ -225,20 +242,7 @@
                 <div class="menu-title">  التجارب / الاعمال الفنية </div>
             </a>
         </li>
-        <li>
-            <a href="#">
-                <div class="parent-icon"><i class="bi bi-tools"></i>
-                </div>
-                <div class="menu-title"> الورش الفنيه</div>
-            </a>
-        </li>
-        <li>
-            <a href="{{ route('galleries.index')  }}">
-                <div class="parent-icon"><i class="bi bi-shop-window"></i>
-                </div>
-                <div class="menu-title">  المعارض الفنية </div>
-            </a>
-        </li>
+
         <li class="dropdown-item dropdown">
             <a href="" onclick="return false" class="dropdown-item collapse" aria-expanded="false">
                 <div class="parent-icon"><i class="lni lni-library"></i>
@@ -270,6 +274,7 @@
                 </li>
             </ul>
         </li>
+
         <li class="dropdown-item dropdown">
             <a href="" onclick="return false" class="dropdown-item collapse" aria-expanded="false">
                 <div class="parent-icon"><i class="lni lni-library"></i>
@@ -294,6 +299,7 @@
                 </li>
             </ul>
         </li>
+
 
         <li>
             <a href="{{ route('guides.index')  }}">
@@ -383,11 +389,31 @@
 
 
 
+        <li>
+            <a href="{{ route('calendar_questions.index')  }}">
+                <div class="parent-icon"><i class="bi bi-question-lg"></i>
+                </div>
+                <div class="menu-title"> أسئلة التقويمات </div>
+            </a>
+        </li>
+
+        <li>
+            <a href="{{ route('calendar_answers.index')  }}">
+                <div class="parent-icon"><i class="bi bi-question-lg"></i>
+                </div>
+                <div class="menu-title"> إجابات التقويمات </div>
+            </a>
+        </li>
 
 
 
-
-
+        <li>
+            <a href="{{ route('toolssection')  }}">
+                <div class="parent-icon"><i class="bi bi-brush-fill"></i>
+                </div>
+                <div class="menu-title">  اقسام الأدوات الدراسية </div>
+            </a>
+        </li>
 
 
 
