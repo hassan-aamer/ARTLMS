@@ -316,7 +316,7 @@
             </a>
         </li>
 
-        @else
+        {{-- @else --}}
             <li>
                 <a href="{{ route('website.teacher.dashboard')  }}">
                     <div class="parent-icon"><i class="bi bi-house-fill"></i>
