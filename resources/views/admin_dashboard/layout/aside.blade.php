@@ -118,63 +118,74 @@
                     <div class="menu-title"> الاجتماعات </div>
                 </a>
             </li>
-            <li>
-                <a href="{{ route('terms.index')  }}">
-                    <div class="parent-icon"><i class="lni lni-layout"></i>
-                    </div>
-                    <div class="menu-title">الفصول الدراسيه </div>
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('sections.index')  }}">
-                    <div class="parent-icon"><i class="bi bi-card-list"></i>
-                    </div>
-                    <div class="menu-title"> الشعب الدراسية   </div>
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('levels.index')  }}">
-                    <div class="parent-icon"><i class="lni lni-layout"></i>
-                    </div>
-                    <div class="menu-title"> الصفوف /المستويات الدراسية  </div>
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('levels.index')  }}">
-                    <div class="parent-icon"><i class="lni lni-layout"></i>
-                    </div>
-                    <div class="menu-title">التخصصات  </div>
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('skills.index')  }}">
-                    <div class="parent-icon"><i class="bx bx-trophy"></i>
-                    </div>
-                    <div class="menu-title"> المهارات المتوقعة </div>
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('units.index') }}">
-                    <div class="parent-icon"><i class="bi bi-collection-fill"></i>
-                    </div>
-                    <div class="menu-title">المواد </div>
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('curriculums.index')  }}">
-                    <div class="parent-icon"><i class="lni lni-book"></i>
-                    </div>
-                    <div class="menu-title"> المناهج </div>
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('scheduleds.index')  }}">
-                    <div class="parent-icon"><i class="bi bi-folder-fill"></i>
-                    </div>
-                    <div class="menu-title"> المقررات الدراسية </div>
-                </a>
-            </li>
 
+            <li>
+                <hr />
+            </li>
+        @endif
+
+        <li>
+            <a href="{{ route('extensions.index')  }}">
+                <div class="parent-icon"><i class="bi bi-file-earmark-text-fill"></i>
+                </div>
+                <div class="menu-title"> أنواع الملفات </div>
+            </a>
+        </li>
+
+        <li>
+            <a href="{{ route('terms.index')  }}">
+                <div class="parent-icon"><i class="lni lni-layout"></i>
+                </div>
+                <div class="menu-title">الفصول الدراسية</div>
+            </a>
+        </li>
+
+        <li>
+            <a href="{{ route('sections.index')  }}">
+                <div class="parent-icon"><i class="bi bi-card-list"></i>
+                </div>
+                <div class="menu-title"> الشعب الدراسية   </div>
+            </a>
+        </li>
+
+        <li>
+            <a href="{{ route('levels.index')  }}">
+                <div class="parent-icon"><i class="lni lni-layout"></i>
+                </div>
+                <div class="menu-title"> الصفوف الدراسية  </div>
+            </a>
+        </li>
+
+        <li>
+            <a href="{{ route('categories.index')  }}">
+                <div class="parent-icon"><i class="bi bi-grid-fill"></i>
+                </div>
+                <div class="menu-title"> المجالات والمحاور الفنية </div>
+            </a>
+        </li>
+        <li>
+            <a href="{{ route('skills.index')  }}">
+                <div class="parent-icon"><i class="bx bx-trophy"></i>
+                </div>
+                <div class="menu-title"> المهارات المتوقعة </div>
+            </a>
+        </li>
+
+        <li>
+            <a href="{{ route('curriculums.index')  }}">
+                <div class="parent-icon"><i class="lni lni-book"></i>
+                </div>
+                <div class="menu-title"> المناهج </div>
+            </a>
+        </li>
+
+        <li>
+            <a href="{{ route('scheduleds.index')  }}">
+                <div class="parent-icon"><i class="bi bi-folder-fill"></i>
+                </div>
+                <div class="menu-title"> المقررات الدراسية </div>
+            </a>
+        </li>
 
         <li>
             <a href="{{ route('units.index')  }}">
@@ -210,20 +221,51 @@
                 <div class="menu-title"> التقويمات </div>
             </a>
         </li>
+        <li>
+            <a href="{{ route('calendar_questions.index')  }}">
+                <div class="parent-icon"><i class="bi bi-question-lg"></i>
+                </div>
+                <div class="menu-title"> أسئلة التقويمات </div>
+            </a>
+        </li>
 
-            <li>
-                <a href="#">
-                    <div class="parent-icon"><i class="bi bi-award-fill"></i>
-                    </div>
-                    <div class="menu-title">  التقيمات  </div>
-                </a>
-            </li>
+        <li>
+            <a href="{{ route('calendar_answers.index')  }}">
+                <div class="parent-icon"><i class="bi bi-question-lg"></i>
+                </div>
+                <div class="menu-title"> إجابات التقويمات </div>
+            </a>
+        </li>
+
+
 
         <li>
             <a href="{{ route('tools.index')  }}">
                 <div class="parent-icon"><i class="bi bi-brush-fill"></i>
                 </div>
                 <div class="menu-title"> الأدوات الدراسية </div>
+            </a>
+        </li>
+        <li>
+            <a href="{{ route('toolssection')  }}">
+                <div class="parent-icon"><i class="bi bi-brush-fill"></i>
+                </div>
+                <div class="menu-title">  اقسام الأدوات الدراسية </div>
+            </a>
+        </li>
+
+        <li>
+            <a href="{{ route('galleries.index')  }}">
+                <div class="parent-icon"><i class="bi bi-shop-window"></i>
+                </div>
+                <div class="menu-title">  المعارض الفنية </div>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <div class="parent-icon"><i class="bi bi-tools"></i>
+                </div>
+                <div class="menu-title"> الورش </div>
             </a>
         </li>
 
@@ -301,130 +343,20 @@
         </li>
 
 
-        <li>
-            <a href="{{ route('guides.index')  }}">
-                <div class="parent-icon"><i class="lni lni-trello"></i>
-                </div>
-                <div class="menu-title"> دليل المستخدم </div>
-            </a>
-        </li>
-        <li>
-            <a href="">
-                <div class="parent-icon"><i class="bi bi-award-fill"></i>
-                </div>
-                <div class="menu-title"> تقييم المنصة </div>
-            </a>
-        </li>
-
-        {{-- @else --}}
             <li>
-                <a href="{{ route('website.teacher.dashboard')  }}">
-                    <div class="parent-icon"><i class="bi bi-house-fill"></i>
+                <a href="{{ route('guides.index')  }}">
+                    <div class="parent-icon"><i class="lni lni-trello"></i>
                     </div>
-                    <div class="menu-title">لوحة التحكم</div>
+                    <div class="menu-title"> دليل المستخدم </div>
                 </a>
             </li>
             <li>
-                <a href="{{route('students_files.index')}}">
-                    <div class="parent-icon"><i class="bi bi-file-code-fill"></i>
+                <a href="">
+                    <div class="parent-icon"><i class="bi bi-award-fill"></i>
                     </div>
-                    <div class="menu-title"> ملفات الإجابات للمتعلمين</div>
-                    @if(getStudentFilesAnswers() > 0)
-                        <span class="countNumber">{{getStudentFilesAnswers()}}</span>
-                    @endif
+                    <div class="menu-title"> تقييم المنصة </div>
                 </a>
             </li>
-
-            <li>
-                <a href="{{route('courses_questions.index')}}">
-                    <div class="parent-icon"><i class="lni lni-library"></i>
-                    </div>
-                    <div class="menu-title"> أسألة المتعلمين </div>
-                    @if(getQuestionsNotAnswered() > 0)
-                        <span class="countNumber">{{getQuestionsNotAnswered()}}</span>
-                    @endif
-                </a>
-            </li>
-            <li>
-                <a href="{{route('meets.index')}}">
-                    <div class="parent-icon"><i class="lni lni-google"></i>
-                    </div>
-                    <div class="menu-title"> الاجتماعات </div>
-                </a>
-            </li>
-
-            <li>
-                <hr />
-            </li>
-        @endif
-
-
-
-
-
-
-
-
-
-        <li>
-            <a href="{{ route('categories.index')  }}">
-                <div class="parent-icon"><i class="bi bi-grid-fill"></i>
-                </div>
-                <div class="menu-title"> المجالات والمحاور الفنية </div>
-            </a>
-        </li>
-
-
-
-{{--
-        <li>
-            <a href="{{ route('units.index')  }}">
-                <div class="parent-icon"><i class="lni lni-text-align-right"></i>
-                </div>
-                <div class="menu-title"> الوحدات الدراسية </div>
-            </a>
-        </li> --}}
-
-
-
-
-
-        <li>
-            <a href="{{ route('calendar_questions.index')  }}">
-                <div class="parent-icon"><i class="bi bi-question-lg"></i>
-                </div>
-                <div class="menu-title"> أسئلة التقويمات </div>
-            </a>
-        </li>
-
-        <li>
-            <a href="{{ route('calendar_answers.index')  }}">
-                <div class="parent-icon"><i class="bi bi-question-lg"></i>
-                </div>
-                <div class="menu-title"> إجابات التقويمات </div>
-            </a>
-        </li>
-
-
-
-        <li>
-            <a href="{{ route('toolssection')  }}">
-                <div class="parent-icon"><i class="bi bi-brush-fill"></i>
-                </div>
-                <div class="menu-title">  اقسام الأدوات الدراسية </div>
-            </a>
-        </li>
-
-
-
-
-
-
-
-
-
-
-
 
             <li>
                 <a href="{{ route('settings.index')  }}">
